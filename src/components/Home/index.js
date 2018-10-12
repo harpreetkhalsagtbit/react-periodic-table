@@ -1,28 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+import Header from '../Header'
+import Footer from '../Footer';
 const Home = () => {
   return (
       <div>
+        <Header/>
         <p>Hello World of React and Webpack!</p>
-        <p>
-            <Link to="/">Home</Link>
-        </p>
-        <p>
-            <Link to="/history">History</Link>
-        </p>
-        <p>
-            <Link to="/alchemy">alchemy</Link>
-        </p>
-        <p>
-            <Link to="/podcast">podcast</Link>
-        </p>
-        <p>
-            <Link to="/video">video</Link>
-        </p>
-        <p>
-            <Link to="/trends">trends</Link>
-        </p>
+        <Footer/>
       </div>
   );
 };
