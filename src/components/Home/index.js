@@ -6,7 +6,22 @@ const Home = () => {
       <div>
         <p>Hello World of React and Webpack!</p>
         <p>
-            <Link to="/dynamic">Navigate to Dynamic Page</Link>
+            <Link to="/">Home</Link>
+        </p>
+        <p>
+            <Link to="/history">History</Link>
+        </p>
+        <p>
+            <Link to="/alchemy">alchemy</Link>
+        </p>
+        <p>
+            <Link to="/podcast">podcast</Link>
+        </p>
+        <p>
+            <Link to="/video">video</Link>
+        </p>
+        <p>
+            <Link to="/trends">trends</Link>
         </p>
       </div>
   );
