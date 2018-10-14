@@ -24,7 +24,7 @@ const PeriodicTable = () => {
     <div className={Styles.container}>
       <div className={Styles.controls}>controls</div>
       <div className={Styles.wrapper}>
-        <div class={Styles.header} />
+        <div className={Styles.header} />
         {firstRow.map((v, key) => {
           if (key === 1) {
             return (
