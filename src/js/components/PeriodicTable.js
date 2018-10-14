@@ -2,6 +2,7 @@ import React, { Fragment } from "react";
 
 import ElementsData from "../../assets/PeriodicTable";
 import Styles from "../../css/PeriodicTable.css";
+import Element from "./Element";
 
 const PeriodicTable = () => {
   console.log("rendering...");
@@ -25,92 +26,65 @@ const PeriodicTable = () => {
       <div className={Styles.controls}>controls</div>
       <div className={Styles.wrapper}>
         <div className={Styles.header} />
-        {firstRow.map((v, key) => {
-          if (key === 1) {
-            return (
-              <div key={key} className={Styles.cell.concat(" ", Styles.He)}>
-                {v.Symbol}
-              </div>
-            );
-          } else {
-            return (
-              <div key={key} className={Styles.cell}>
-                {v.Symbol}
-              </div>
-            );
-          }
-        })}
+        {firstRow.map((v, key) => (
+          <Element
+            key={key}
+            index={key}
+            className={
+              key === 1 ? Styles.cell.concat(" ", Styles.He) : Styles.cell
+            }
+            value={v}
+          />
+        ))}
       </div>
       <div className={Styles.wrapper}>
         <div className={Styles.description} />
-        {secondAndThirdRow.map((v, key) => {
-          return (
-            <div key={key} className={Styles.cell}>
-              {v.Symbol}
-            </div>
-          );
-        })}
+        {secondAndThirdRow.map((v, key) => (
+          <Element key={key} index={key} className={Styles.cell} value={v} />
+        ))}
       </div>
       <div className={Styles.wrapper}>
-        {FourthAndFifthRow.map((v, key) => {
-          return (
-            <div key={key} className={Styles.cell}>
-              {v.Symbol}
-            </div>
-          );
-        })}
+        {FourthAndFifthRow.map((v, key) => (
+          <Element key={key} index={key} className={Styles.cell} value={v} />
+        ))}
       </div>
       <div className={Styles.wrapper}>
-        {SixthRow.map((v, key) => {
-          return (
-            <div key={key} className={Styles.cell}>
-              {v.Symbol}
-            </div>
-          );
-        })}
+        {SixthRow.map((v, key) => (
+          <Element key={key} index={key} className={Styles.cell} value={v} />
+        ))}
       </div>
       <div className={Styles.wrapper}>
-        {SeventhRow.map((v, key) => {
-          return (
-            <div key={key} className={Styles.cell}>
-              {v.Symbol}
-            </div>
-          );
-        })}
+        {SeventhRow.map((v, key) => (
+          <Element key={key} index={key} className={Styles.cell} value={v} />
+        ))}
       </div>
       <div className={Styles.wrapper}>
-        {EigthRow.map((v, key) => {
-          if (key === 0) {
-            return (
-              <div key={key} className={Styles.cell.concat(" ", Styles.fAndPBlock)}>
-                {v.Symbol}
-              </div>
-            );
-          } else {
-            return (
-              <div key={key} className={Styles.cell}>
-                {v.Symbol}
-              </div>
-            );
-          }
-        })}
+        {EigthRow.map((v, key) => (
+          <Element
+            key={key}
+            index={key}
+            className={
+              key === 0
+                ? Styles.cell.concat(" ", Styles.fAndPBlock)
+                : Styles.cell
+            }
+            value={v}
+          />
+        ))}
       </div>
       <div className={Styles.wrapper}>
-        {NinthRow.map((v, key) => {
-          if (key === 0) {
-            return (
-              <div key={key} className={Styles.cell.concat(" ", Styles.fAndPBlock)}>
-                {v.Symbol}
-              </div>
-            );
-          } else {
-            return (
-              <div key={key} className={Styles.cell}>
-                {v.Symbol}
-              </div>
-            );
-          }
-        })}
+        {NinthRow.map((v, key) => (
+          <Element
+            key={key}
+            index={key}
+            className={
+              key === 0
+                ? Styles.cell.concat(" ", Styles.fAndPBlock)
+                : Styles.cell
+            }
+            value={v}
+          />
+        ))}
       </div>
     </div>
   );
