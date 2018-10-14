@@ -22,8 +22,9 @@ const PeriodicTable = () => {
   const NinthRow = ElementsData.Elements.slice(89, 103);
 
   // This is a design pattern for React - Layout Component
-  // This can't be ClassLess because we need shouldComponentUpdate
+  // This must be a Class Component because we need shouldComponentUpdate
   // with returning value to be false always to prevent unnecessary rendering
+  // This could be either a Stateless or Statefull Class Component
   class Container extends React.Component {
     shouldComponentUpdate() {
       return false;
@@ -35,8 +36,9 @@ const PeriodicTable = () => {
   }
 
   // This is a design pattern for React - Layout Component
-  // This can't be ClassLess because we need shouldComponentUpdate
+  // This must be a Class Component because we need shouldComponentUpdate
   // with returning value to be false always to prevent unnecessary rendering
+  // This could be either a Stateless or Statefull Class Component
   class GridWrapper extends React.Component {
     shouldComponentUpdate() {
       return false;
@@ -48,8 +50,15 @@ const PeriodicTable = () => {
   }
 
   // This is a Design pattern for React - Container Component
-  // It can also be a Classfull component
-  const ElementList = ({ row, checkAt = null, secondaryClass = '' }) => (
+  // It is a View only Container.
+  // Other name for this is - Presentational Component
+  // It is a Stateless Dumb Functional Component - Not a Class
+  // We can also make it a Class Component if we need to use
+  // Lifecycle methods to manage certain things, then it would be
+  // a Stateless Class Component or StateFull Class Component
+  // A Statefull Class Component is actually a Layout Component and
+  // A Stateless Functional Component is a Container Component
+  const ElementList = ({ row, checkAt = null, secondaryClass = "" }) => (
     <Fragment>
       {row.map((v, key) => (
         <Element
@@ -66,9 +75,13 @@ const PeriodicTable = () => {
     </Fragment>
   );
 
+  // Below are all Stateless Dumb Functional Components
+  // or Presentational Components
+  // or View Only Components
   const Header = () => <div className={Styles.header} />;
   const Description = () => <div className={Styles.description} />;
   const Controls = () => <div className={Styles.controls}>controls</div>;
+
   return (
     <Container>
       <Controls />
