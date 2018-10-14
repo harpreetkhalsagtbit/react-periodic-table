@@ -22,8 +22,8 @@ const PeriodicTable = () => {
   const NinthRow = ElementsData.Elements.slice(89, 103);
 
   // This is a design pattern for React - Layout Component
-  // This can't be ClassLess ecause we need shouldCOmponentUpdate
-  // returning false always to prevent unnecessary rendering
+  // This can't be ClassLess because we need shouldComponentUpdate
+  // with returning value to be false always to prevent unnecessary rendering
   class Container extends React.Component {
     shouldComponentUpdate() {
       return false;
@@ -35,8 +35,8 @@ const PeriodicTable = () => {
   }
 
   // This is a design pattern for React - Layout Component
-  // This can't be ClassLess ecause we need shouldCOmponentUpdate
-  // returning false always to prevent unnecessary rendering
+  // This can't be ClassLess because we need shouldComponentUpdate
+  // with returning value to be false always to prevent unnecessary rendering
   class GridWrapper extends React.Component {
     shouldComponentUpdate() {
       return false;
@@ -49,14 +49,16 @@ const PeriodicTable = () => {
 
   // This is a Design pattern for React - Container Component
   // It can also be a Classfull component
-  const ElementList = ({ row, checkAt=null, secondaryClass }) => (
+  const ElementList = ({ row, checkAt = null, secondaryClass = '' }) => (
     <Fragment>
       {row.map((v, key) => (
         <Element
           key={key}
           index={key}
           className={
-            key === checkAt ? Styles.cell.concat(" ", secondaryClass) : Styles.cell
+            key === checkAt
+              ? Styles.cell.concat(" ", secondaryClass)
+              : Styles.cell
           }
           value={v}
         />
@@ -72,11 +74,7 @@ const PeriodicTable = () => {
       <Controls />
       <GridWrapper>
         <Header />
-        <ElementList
-          row={firstRow}
-          checkAt={1}
-          secondaryClass={Styles.He}
-        />
+        <ElementList row={firstRow} checkAt={1} secondaryClass={Styles.He} />
       </GridWrapper>
       <GridWrapper>
         <Description />
