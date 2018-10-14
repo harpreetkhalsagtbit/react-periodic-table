@@ -106,14 +106,14 @@ const PeriodicTable = () => {
         <ElementList
           row={EigthRow}
           checkAt={0}
-          secondaryClass={Styles.fAndPBlock}
+          secondaryClass={Styles.fBlock}
         />
       </GridWrapper>
       <GridWrapper>
         <ElementList
           row={NinthRow}
           checkAt={0}
-          secondaryClass={Styles.fAndPBlock}
+          secondaryClass={Styles.fBlock}
         />
       </GridWrapper>
     </Container>
