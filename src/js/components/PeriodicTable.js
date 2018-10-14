@@ -21,92 +21,89 @@ const PeriodicTable = () => {
   const EigthRow = ElementsData.Elements.slice(57, 71);
   const NinthRow = ElementsData.Elements.slice(89, 103);
 
+  // This is a design pattern for React - Layout Component
+  // This can't be ClassLess ecause we need shouldCOmponentUpdate
+  // returning false always to prevent unnecessary rendering
   class Container extends React.Component {
     shouldComponentUpdate() {
-      return false
+      return false;
     }
 
     render() {
-      return <div className={Styles.container}>{this.props.children}</div>
+      return <div className={Styles.container}>{this.props.children}</div>;
     }
   }
 
+  // This is a design pattern for React - Layout Component
+  // This can't be ClassLess ecause we need shouldCOmponentUpdate
+  // returning false always to prevent unnecessary rendering
   class GridWrapper extends React.Component {
     shouldComponentUpdate() {
-      return false
+      return false;
     }
 
     render() {
-      return <div className={Styles.wrapper}>{this.props.children}</div>
+      return <div className={Styles.wrapper}>{this.props.children}</div>;
     }
   }
-  const Header = () => (<div className={Styles.header} />)
-  const Description = () => (<div className={Styles.description} />)
-  const Controls = () => (<div className={Styles.controls}>controls</div>)
+
+  // This is a Design pattern for React - Container Component
+  // It can also be a Classfull component
+  const ElementList = ({ row, checkAt=null, secondaryClass }) => (
+    <Fragment>
+      {row.map((v, key) => (
+        <Element
+          key={key}
+          index={key}
+          className={
+            key === checkAt ? Styles.cell.concat(" ", secondaryClass) : Styles.cell
+          }
+          value={v}
+        />
+      ))}
+    </Fragment>
+  );
+
+  const Header = () => <div className={Styles.header} />;
+  const Description = () => <div className={Styles.description} />;
+  const Controls = () => <div className={Styles.controls}>controls</div>;
   return (
     <Container>
-      <Controls/>
+      <Controls />
       <GridWrapper>
-        <Header/>
-        {firstRow.map((v, key) => (
-          <Element
-            key={key}
-            index={key}
-            className={
-              key === 1 ? Styles.cell.concat(" ", Styles.He) : Styles.cell
-            }
-            value={v}
-          />
-        ))}
+        <Header />
+        <ElementList
+          row={firstRow}
+          checkAt={1}
+          secondaryClass={Styles.He}
+        />
       </GridWrapper>
       <GridWrapper>
-        <Description/>
-        {secondAndThirdRow.map((v, key) => (
-          <Element key={key} index={key} className={Styles.cell} value={v} />
-        ))}
+        <Description />
+        <ElementList row={secondAndThirdRow} className={Styles.cell} />
       </GridWrapper>
       <GridWrapper>
-        {FourthAndFifthRow.map((v, key) => (
-          <Element key={key} index={key} className={Styles.cell} value={v} />
-        ))}
+        <ElementList row={FourthAndFifthRow} className={Styles.cell} />
       </GridWrapper>
       <GridWrapper>
-        {SixthRow.map((v, key) => (
-          <Element key={key} index={key} className={Styles.cell} value={v} />
-        ))}
+        <ElementList row={SixthRow} className={Styles.cell} />
       </GridWrapper>
       <GridWrapper>
-        {SeventhRow.map((v, key) => (
-          <Element key={key} index={key} className={Styles.cell} value={v} />
-        ))}
+        <ElementList row={SeventhRow} className={Styles.cell} />
       </GridWrapper>
       <GridWrapper>
-        {EigthRow.map((v, key) => (
-          <Element
-            key={key}
-            index={key}
-            className={
-              key === 0
-                ? Styles.cell.concat(" ", Styles.fAndPBlock)
-                : Styles.cell
-            }
-            value={v}
-          />
-        ))}
+        <ElementList
+          row={EigthRow}
+          checkAt={0}
+          secondaryClass={Styles.fAndPBlock}
+        />
       </GridWrapper>
       <GridWrapper>
-        {NinthRow.map((v, key) => (
-          <Element
-            key={key}
-            index={key}
-            className={
-              key === 0
-                ? Styles.cell.concat(" ", Styles.fAndPBlock)
-                : Styles.cell
-            }
-            value={v}
-          />
-        ))}
+        <ElementList
+          row={NinthRow}
+          checkAt={0}
+          secondaryClass={Styles.fAndPBlock}
+        />
       </GridWrapper>
     </Container>
   );
