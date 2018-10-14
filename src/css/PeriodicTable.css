@@ -1,0 +1,49 @@
+.container {
+  margin: auto;
+  width: 70%;
+  display: grid;
+  grid-gap: 3px;
+}
+
+.controls {
+  background-color: #f2f2f3;
+}
+
+.wrapper {
+  display: grid;
+  grid-gap: 1px;
+  grid-template-columns: repeat(18, 1fr);
+  grid-auto-rows: 50px;
+}
+
+.cell {
+  background-color: blue;
+  border: 3px solid green;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.header {
+  grid-row-start: 1;
+  grid-column-start: 3;
+  grid-column-end: 13;
+  background-color: grey;
+}
+
+.description {
+  grid-column-start: 3;
+  grid-column-end: 13;
+  grid-row-start: 1;
+  grid-row-end: 3;
+  background-color: red;
+}
+
+.He {
+  grid-column-start: 18;
+}
+
+.f-block {
+    grid-column-start: 3;
+}

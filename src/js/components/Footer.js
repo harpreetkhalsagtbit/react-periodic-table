@@ -3,11 +3,11 @@ import { Link } from 'react-router-dom';
 
 const Footer = () => {
   return (
-      <div>
+      <footer>
         <span>
         © Royal Society of Chemistry 2018
         </span>
-      </div>
+      </footer>
   );
 };
 

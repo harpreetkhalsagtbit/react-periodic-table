@@ -6,7 +6,7 @@ const port = process.env.PORT || 3000;
 module.exports = {
   // Webpack configuration goes here
   mode: "development",
-  entry: "./src/index.js",
+  entry: "./src/js/index.js",
   output: {
     filename: '[name].[hash].js',
     publicPath: '/'
