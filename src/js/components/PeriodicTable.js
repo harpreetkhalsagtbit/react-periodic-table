@@ -21,11 +21,33 @@ const PeriodicTable = () => {
   const EigthRow = ElementsData.Elements.slice(57, 71);
   const NinthRow = ElementsData.Elements.slice(89, 103);
 
+  class Container extends React.Component {
+    shouldComponentUpdate() {
+      return false
+    }
+
+    render() {
+      return <div className={Styles.container}>{this.props.children}</div>
+    }
+  }
+
+  class GridWrapper extends React.Component {
+    shouldComponentUpdate() {
+      return false
+    }
+
+    render() {
+      return <div className={Styles.wrapper}>{this.props.children}</div>
+    }
+  }
+  const Header = () => (<div className={Styles.header} />)
+  const Description = () => (<div className={Styles.description} />)
+  const Controls = () => (<div className={Styles.controls}>controls</div>)
   return (
-    <div className={Styles.container}>
-      <div className={Styles.controls}>controls</div>
-      <div className={Styles.wrapper}>
-        <div className={Styles.header} />
+    <Container>
+      <Controls/>
+      <GridWrapper>
+        <Header/>
         {firstRow.map((v, key) => (
           <Element
             key={key}
@@ -36,29 +58,29 @@ const PeriodicTable = () => {
             value={v}
           />
         ))}
-      </div>
-      <div className={Styles.wrapper}>
-        <div className={Styles.description} />
+      </GridWrapper>
+      <GridWrapper>
+        <Description/>
         {secondAndThirdRow.map((v, key) => (
           <Element key={key} index={key} className={Styles.cell} value={v} />
         ))}
-      </div>
-      <div className={Styles.wrapper}>
+      </GridWrapper>
+      <GridWrapper>
         {FourthAndFifthRow.map((v, key) => (
           <Element key={key} index={key} className={Styles.cell} value={v} />
         ))}
-      </div>
-      <div className={Styles.wrapper}>
+      </GridWrapper>
+      <GridWrapper>
         {SixthRow.map((v, key) => (
           <Element key={key} index={key} className={Styles.cell} value={v} />
         ))}
-      </div>
-      <div className={Styles.wrapper}>
+      </GridWrapper>
+      <GridWrapper>
         {SeventhRow.map((v, key) => (
           <Element key={key} index={key} className={Styles.cell} value={v} />
         ))}
-      </div>
-      <div className={Styles.wrapper}>
+      </GridWrapper>
+      <GridWrapper>
         {EigthRow.map((v, key) => (
           <Element
             key={key}
@@ -71,8 +93,8 @@ const PeriodicTable = () => {
             value={v}
           />
         ))}
-      </div>
-      <div className={Styles.wrapper}>
+      </GridWrapper>
+      <GridWrapper>
         {NinthRow.map((v, key) => (
           <Element
             key={key}
@@ -85,8 +107,8 @@ const PeriodicTable = () => {
             value={v}
           />
         ))}
-      </div>
-    </div>
+      </GridWrapper>
+    </Container>
   );
 };
 
