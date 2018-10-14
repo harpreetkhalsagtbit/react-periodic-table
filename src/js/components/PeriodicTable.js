@@ -82,7 +82,7 @@ const PeriodicTable = () => {
         {EigthRow.map((v, key) => {
           if (key === 0) {
             return (
-              <div key={key} className={Styles.cell.concat(" ", Styles.fBlock)}>
+              <div key={key} className={Styles.cell.concat(" ", Styles.fAndPBlock)}>
                 {v.Symbol}
               </div>
             );
@@ -99,7 +99,7 @@ const PeriodicTable = () => {
         {NinthRow.map((v, key) => {
           if (key === 0) {
             return (
-              <div key={key} className={Styles.cell.concat(" ", Styles.fBlock)}>
+              <div key={key} className={Styles.cell.concat(" ", Styles.fAndPBlock)}>
                 {v.Symbol}
               </div>
             );
