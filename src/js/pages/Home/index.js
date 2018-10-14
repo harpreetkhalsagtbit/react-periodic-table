@@ -3,7 +3,7 @@ import React, { Fragment } from "react";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import PeriodicTable from '../../components/PeriodicTable'
-const Home = () => {
+const Home = (props) => {
   console.log("rendering...");
   return (
     <Fragment>

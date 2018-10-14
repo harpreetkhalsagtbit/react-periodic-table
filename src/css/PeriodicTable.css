@@ -18,7 +18,7 @@
 
 .cell {
   background-color: blue;
-  border: 3px solid green;
+  /* border: 3px solid rgb(243, 46, 46); */
   display: flex;
   justify-content: center;
   align-items: center;
