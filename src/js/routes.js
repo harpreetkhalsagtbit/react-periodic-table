@@ -5,12 +5,12 @@ import Home from "./pages/Home";
 import Loading from "./components/common/Loading";
 
 const AsyncHistory = importedComponent(
-    () => import(/* webpackChunkName:'History' */ "./pages/History"),
-    {
-      LoadingComponent: Loading
-    }
-  );
-  
+  () => import(/* webpackChunkName:'History' */ "./pages/History"),
+  {
+    LoadingComponent: Loading
+  }
+);
+
 export default [
   {
     path: "/",
@@ -26,5 +26,4 @@ export default [
       return <AsyncHistory {...props} />;
     }
   }
-
 ];
