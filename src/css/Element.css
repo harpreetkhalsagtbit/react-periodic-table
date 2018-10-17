@@ -1,0 +1,127 @@
+.element {
+    height: 50px;
+    width: 50px;
+    margin-right: 2px;
+    font-family: Arial;
+    /* background: url(../images/Button_bdg.png) scroll no-repeat -2px 0px #3d697c; */
+    cursor: pointer;
+}
+.elementName {
+    text-align: center;
+    height: 30px;
+    width:50px;
+    font-family: museo_sans_700regular,Arial !important;
+    font-size: 18px;
+    background-color: bisque;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.elementNo {
+    height: 20px;
+    text-align: center;
+    color: white;
+    font-family: museo_sans_500regular,Arial !important;
+    font-size: 11px;
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hydrogenName {
+    background-color: #a3c7d2;
+}
+
+.hydrogenNumber {
+    background-color: #3d697c;
+}
+
+.groupOneName {
+    background-color: #ebbfd8;
+}
+
+.groupOneNumber {
+    background-color: #922348;
+}
+
+.groupTwoName {
+    background-color: #f7c9e5;
+}
+
+.groupTwoNumber {
+    background-color: #e43d7a;
+}
+
+.groupThreeToTwelveName {
+    background-color: #5bc2e7;
+}
+
+.groupThreeToTwelveNumber {
+    background-color: #216fb9;
+}
+
+.groupThirteenName {
+    background-color: #cedd44;
+}
+
+.groupThirteenNumber {
+    background-color: #53731c;
+}
+
+.groupFourteenName {
+    background-color: #d1a2cb;
+}
+
+.groupFourteenNumber {
+    background-color: #833177;
+}
+
+.groupFifteenName {
+    background-color: #b5b9ba;
+}
+
+.groupFifteenNumber {
+    background-color: #505759;
+}
+
+.groupSixteenName {
+    background-color: #f0b342;
+}
+
+.groupSixteenNumber {
+    background-color: #b72b25;
+}
+
+.groupSeventeenName {
+    background-color: #eab37f;
+}
+
+.groupSeventeenNumber {
+    background-color: #be4e29;
+}
+
+.groupEighteenName {
+    background-color: #eada48;
+}
+
+.groupEighteenNumber {
+    background-color: #9d6e27;
+}
+
+.groupNineteenName {
+    background-color: #bfeaec;
+}
+
+.groupNineteenNumber {
+    background-color: #398c95;
+}
+
+.groupTwentyName {
+    background-color: #a2d34d;
+}
+
+.groupTwentyNumber {
+    background-color: #458a20;
+}

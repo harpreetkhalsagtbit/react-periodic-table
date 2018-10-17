@@ -17,12 +17,12 @@
 }
 
 .cell {
-  background-color: blue;
+  /* background-color: blue; */
   /* border: 3px solid rgb(243, 46, 46); */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
+  /* display: flex; */
+  /* justify-content: center; */
+  /* align-items: center; */
+  /* overflow: hidden; */
 }
 
 .header {
@@ -30,6 +30,13 @@
   grid-column-start: 3;
   grid-column-end: 13;
   background-color: grey;
+  background: #f2f2f4;
+  color: #636363;
+  line-height: 26px;
+  padding: 14px 0 0 15px;
+  text-align: left;
+  font-family: museo_sans_500regular, Arial !important;
+  font-size: 30px;
 }
 
 .description {
@@ -37,7 +44,15 @@
   grid-column-end: 13;
   grid-row-start: 1;
   grid-row-end: 3;
-  background-color: red;
+  border: 1px solid #dedede;
+  padding: 6px 11px 11px 11px;
+  /* width: 491px; */
+  /* height: 80px; */
+  margin-top: 4px;
+  overflow: hidden;
+  font-family: Arial !important;
+  font-size: 12px;
+  color: #636363;
 }
 
 .He {
@@ -45,5 +60,73 @@
 }
 
 .fBlock {
-    grid-column-start: 3;
+  grid-column-start: 3;
 }
+
+.elementDescription {
+  grid-column-start: 3;
+  grid-column-end: 13;
+  grid-row-start: 1;
+  grid-row-end: 3;
+  border: 1px solid #dedede;
+  /* width: 491px; */
+  /* height: 80px; */
+  /* margin-top: 4px;
+  overflow: hidden; */
+  font-family: Arial !important;
+  font-size: 12px;
+  color: #636363;
+
+  display: grid;
+  grid-template-columns: 1.2fr 2fr 2fr 1.2fr;
+  border: 1px solid red;
+}
+
+.elementDescription .elementImg {
+  height: 100px;
+}
+
+.elementDescriptionTable {
+  display: grid;
+}
+
+.elementDescriptionTable div{
+  border: 1px solid red;
+}
+
+.elementDescriptionTable div{
+  border-bottom: 0px solid red;
+  border-left: 0px solid red;
+}
+
+.bigCell {
+  display: grid;
+  /* grid-template-rows: 1.5fr 1fr; */
+  color:black;
+  height: 100px;;
+}
+
+.bigCellLabel {
+    text-align: center;
+    font-family: museo_sans_700regular,Arial !important;
+    font-size: 13px;
+    background-color: #bfeaec;
+}
+.bigCellLabelIconBigText {
+  font-size: 40px;
+}
+
+.bigCellDescription {
+  background-color: #398c95;
+  display: grid;
+  grid-template-columns: 1.2fr 2fr;
+}
+
+.bigCellDescription div{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* height: 106px!important;
+    width: 100px!important; */
