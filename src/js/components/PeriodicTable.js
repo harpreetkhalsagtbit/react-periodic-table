@@ -8,11 +8,7 @@ import Element from "./Element";
 // This must be a Class Component because we need shouldComponentUpdate
 // with returning value to be false always to prevent unnecessary rendering
 // This could be either a Stateless or Statefull Class Component
-class Container extends React.Component {
-  shouldComponentUpdate() {
-    return false;
-  }
-
+class Container extends React.PureComponent {
   render() {
     return <div className={Styles.container}>{this.props.children}</div>;
   }
@@ -22,13 +18,13 @@ class Container extends React.Component {
 // This must be a Class Component because we need shouldComponentUpdate
 // with returning value to be false always to prevent unnecessary rendering
 // This could be either a Stateless or Statefull Class Component
-class GridWrapper extends React.Component {
-  shouldComponentUpdate() {
-    return false;
-  }
-
+class GridWrapper extends React.PureComponent {
   render() {
-    return <div className={Styles.wrapper}>{this.props.children}</div>;
+    return (
+      <div className={Styles.wrapper} value={this.props.value}>
+        {this.props.children}
+      </div>
+    );
   }
 }
 
@@ -41,12 +37,13 @@ class GridWrapper extends React.Component {
 // a Stateless Class Component or StateFull Class Component
 // A Statefull Class Component is actually a Layout Component and
 // A Stateless Functional Component is a Container Component
-const ElementList = ({ row, checkAt = null, secondaryClass = "" }) => (
+const ElementList = ({ row, checkAt = null, secondaryClass = "", onHover }) => (
   <Fragment>
     {row.map((v, key) => (
       <Element
         key={key}
         index={key}
+        onHover={onHover}
         className={
           key === checkAt
             ? Styles.cell.concat(" ", secondaryClass)
@@ -66,34 +63,102 @@ const desc =
   "The Royal Society of Chemistry's interactive periodic table features history, alchemy, podcasts, videos, and data trends across the periodic table. Click the tabs at the top to explore each section. Use the buttons above to change your view of the periodic table and view Murray Robertson’s stunning Visual Elements artwork. Click each element to read detailed information.";
 const Description = () => <div className={Styles.description}>{desc}</div>;
 const Controls = () => <div className={Styles.controls}>controls</div>;
-const ElementDescription = () => {
+const ElementHeader = ({ value, stylesObj = { number: "", name: "" } }) => {
+  console.log(value.Name, stylesObj);
+  let selectedElementsNumberClass = stylesObj.number.split(" ").pop();
+  return (
+    <div
+      className={Styles.header.concat(
+        " ",
+        selectedElementsNumberClass,
+        " ",
+        Styles.headerSelectedElement
+      )}
+    >
+      {value.Name}
+    </div>
+  );
+};
+const keyIsotopes = (elementId = 1) => {
+  let isotope = ElementsData.KeyIsotopes[elementId - 1];
+  if (isotope.Value.indexOf(",") != -1) {
+    var splitComma = isotope.Value.split(",");
+    let acc = [];
+    acc = splitComma.reduce((acc, element, index) => {
+      return acc.concat(sanitizeSubscript(element));
+    }, acc);
+    return acc;
+  } else {
+    return sanitizeSubscript(isotope.Value);
+  }
+};
+const sanitizeSubscript = (value = "") => {
+  let splitArr = value.split(/<sup>|<\/sup>/i);
+  let acc = [];
+  acc = splitArr.reduce((acc, element, index) => {
+    if (/^\d+$/.test(element)) {
+      return acc.concat(<sup>{element}</sup>);
+    } else {
+      return acc.concat(element);
+    }
+  }, acc);
+  return acc;
+};
+const getFirstIonisationEnergy = (elementId = 1) => {
+  return ElementsData.FirstIonisationEnergies[elementId - 1].Value || "Unknown";
+};
+const ElementDescription = ({
+  value,
+  stylesObj = { number: "", name: "" }
+}) => {
+  console.log(value, "props desc");
+  let selectedElementsNumberClass = stylesObj.number.split(" ").pop();
+  let selectedElementsNameClass = stylesObj.name.split(" ").pop();
   return (
     <div className={Styles.elementDescription}>
       <div>
-        <img  className={Styles.elementImg} src="http://sod-a.rsc-cdn.org/www.rsc.org/periodic-table/content/Images/Elements/Cerium-S.png?6.2.0.0" />
+        <img
+          className={Styles.elementImg}
+          src={
+            "http://sod-a.rsc-cdn.org/www.rsc.org/periodic-table/content/Images/Elements/" +
+            value.MurrayImageName +
+            "-S.png?6.2.0.0"
+          }
+        />
       </div>
       <div className={Styles.elementDescriptionTable}>
-        <div>1</div>
-        <div>2</div>
-        <div>3</div>
-        <div>4</div>
+        <div>key isotopes</div>
+        <div>Electronic Configuration</div>
+        <div>
+          Density(g cm
+          <sup>-3</sup>)
+        </div>
+        <div>
+          1<sup>st</sup> ionisation energy
+        </div>
       </div>
       <div className={Styles.elementDescriptionTable}>
-        <div>1</div>
-        <div>2</div>
-        <div>3</div>
-        <div>4</div>
+        <div>{keyIsotopes(value.ElementID)}</div>
+        <div>{sanitizeSubscript(value.ElectronConfiguration)}</div>
+        <div>{value.Density || "Unknown"}</div>
+        <div>{getFirstIonisationEnergy(value.ElementID)}</div>
       </div>
       <div className={Styles.bigCell}>
-        <div className={Styles.bigCellLabel}>
-          <div className={Styles.bigCellLabelIconBigText}>
-            Al
-          </div>
-          <div>Aluminium</div>
+        <div
+          className={Styles.bigCellLabel.concat(" ", selectedElementsNameClass)}
+        >
+          <div className={Styles.bigCellLabelIconBigText}>{value.Symbol}</div>
+          <div>{value.Name}</div>
         </div>
         <div className={Styles.bigCellDescription}>
-          <div>102</div>
-          <div>3.23</div>
+          <div
+            className={selectedElementsNumberClass.concat(" ", Styles.white)}
+          >
+            {value.AtomicNumber}
+          </div>
+          <div className={selectedElementsNameClass}>
+            {value.RelativeAtomicMass}
+          </div>
         </div>
       </div>
     </div>
@@ -101,9 +166,18 @@ const ElementDescription = () => {
 };
 // const PeriodicTable = () => {
 class PeriodicTable extends React.PureComponent {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
+    this.state = {
+      selectedElementDetails: {}
+    };
+
+    this.onHover = this.onHover.bind(this);
   }
+  onHover(value, stylesObj) {
+    this.setState(state => ({ selectedElementDetails: value, stylesObj }));
+  }
+
   render() {
     console.log("rendering...");
     console.log(Styles);
@@ -125,27 +199,55 @@ class PeriodicTable extends React.PureComponent {
       <Container>
         <Controls />
         <GridWrapper>
-          <Header />
-          <ElementList row={firstRow} checkAt={1} secondaryClass={Styles.He} />
+          <ElementHeader
+            value={this.state.selectedElementDetails}
+            stylesObj={this.state.stylesObj}
+          />
+          <ElementList
+            row={firstRow}
+            checkAt={1}
+            secondaryClass={Styles.He}
+            onHover={this.onHover}
+          />
         </GridWrapper>
         <GridWrapper>
-          <ElementDescription />
-          <ElementList row={secondAndThirdRow} className={Styles.cell} />
+          <ElementDescription
+            value={this.state.selectedElementDetails}
+            stylesObj={this.state.stylesObj}
+          />
+          <ElementList
+            row={secondAndThirdRow}
+            className={Styles.cell}
+            onHover={this.onHover}
+          />
         </GridWrapper>
         <GridWrapper>
-          <ElementList row={FourthAndFifthRow} className={Styles.cell} />
+          <ElementList
+            row={FourthAndFifthRow}
+            className={Styles.cell}
+            onHover={this.onHover}
+          />
         </GridWrapper>
         <GridWrapper>
-          <ElementList row={SixthRow} className={Styles.cell} />
+          <ElementList
+            row={SixthRow}
+            className={Styles.cell}
+            onHover={this.onHover}
+          />
         </GridWrapper>
         <GridWrapper>
-          <ElementList row={SeventhRow} className={Styles.cell} />
+          <ElementList
+            row={SeventhRow}
+            className={Styles.cell}
+            onHover={this.onHover}
+          />
         </GridWrapper>
         <GridWrapper>
           <ElementList
             row={EigthRow}
             checkAt={0}
             secondaryClass={Styles.fBlock}
+            onHover={this.onHover}
           />
         </GridWrapper>
         <GridWrapper>
@@ -153,6 +255,7 @@ class PeriodicTable extends React.PureComponent {
             row={NinthRow}
             checkAt={0}
             secondaryClass={Styles.fBlock}
+            onHover={this.onHover}
           />
         </GridWrapper>
       </Container>

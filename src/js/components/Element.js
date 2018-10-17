@@ -110,18 +110,19 @@ let getELementSpecificProperties = (elementId, groupId, className) => {
   return obj;
 };
 
-const onHover = () => {
-  console.log('hover')
-}
 
-const Element = ({ index, className, value }) => {
+const Element = ({ index, className, value, onHover }) => {
+  const onMouseOver = () => {
+    onHover(value, stylesObj)
+  }
+  
   let stylesObj = getELementSpecificProperties(
     value.ElementID,
     value.GroupID,
     className
   );
   return (
-    <div key={index} className={stylesObj.cell} onMouseOver={onHover}>
+    <div key={index} className={stylesObj.cell} onMouseOver={onMouseOver}>
       <div className={stylesObj.name}>{value.Symbol}</div>
       <div className={stylesObj.number}>{value.ElementID}</div>
     </div>
