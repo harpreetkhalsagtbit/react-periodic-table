@@ -79,7 +79,7 @@ class PeriodicTable extends React.PureComponent {
                 stylesObj={this.state.stylesObj}
                 supplyRiskColor={this.state.supplyRiskColor}
               />
-              <SupplyRisk />
+              {this.state.isHoverActive?<SupplyRisk />:""}
             </Fragment>
           ) : (
             <Header />

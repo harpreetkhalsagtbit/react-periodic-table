@@ -2,8 +2,8 @@ import React from "react";
 
 import Styles from "../../css/PeriodicTable.css";
 
-const SupplyRisk = (isHoverActive = false) => {
-  return isHoverActive ? (
+const SupplyRisk = () => {
+  return (
     <div className={Styles.supplyRisk}>
       <div className={Styles.supplyRiskRows}>
         <div className={Styles.supplyRiskCols}>
@@ -38,9 +38,7 @@ const SupplyRisk = (isHoverActive = false) => {
         </div>
       </div>
     </div>
-  ) : (
-    ""
-  );
+  )
 };
 
 export default SupplyRisk;
