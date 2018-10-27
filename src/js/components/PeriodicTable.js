@@ -45,9 +45,7 @@ const ElementList = ({ row, checkAt = null, secondaryClass = "", onHover }) => (
         index={key}
         onHover={onHover}
         className={
-          key === checkAt
-            ? Styles.cell.concat(" ", secondaryClass)
-            : Styles.cell
+          key === checkAt ? `${Styles.cell} ${secondaryClass}` : Styles.cell
         }
         value={v}
       />
@@ -63,17 +61,41 @@ const desc =
   "The Royal Society of Chemistry's interactive periodic table features history, alchemy, podcasts, videos, and data trends across the periodic table. Click the tabs at the top to explore each section. Use the buttons above to change your view of the periodic table and view Murray Robertson’s stunning Visual Elements artwork. Click each element to read detailed information.";
 const Description = () => <div className={Styles.description}>{desc}</div>;
 const Controls = () => <div className={Styles.controls}>controls</div>;
+const SupplyRisk = (isHoverActive = false) => {
+  return isHoverActive ? (
+    <div className={Styles.supplyRisk}>
+      <div className={Styles.supplyRiskRows}>
+        <div className={Styles.supplyRiskCols}>
+          <div className={`${Styles.supplyRiskColBlock} ${Styles.highSupplyRisk}`}/>
+          <div className={Styles.supplyRiskColText}>High Supply Risk</div>
+        </div>
+        <div className={Styles.supplyRiskCols}>
+        <div className={`${Styles.supplyRiskColBlock} ${Styles.lowSupplyRisk}`}/>
+          <div className={Styles.supplyRiskColText}>Low Supply Risk</div>
+        </div>
+      </div>
+      <div className={Styles.supplyRiskRows}>
+        <div className={Styles.supplyRiskCols}>
+        <div className={`${Styles.supplyRiskColBlock} ${Styles.mediumSupplyRisk}`}/>
+          <div className={Styles.supplyRiskColText}>Medium Supply Risk</div>
+        </div>
+        <div className={Styles.supplyRiskCols}>
+        <div className={`${Styles.supplyRiskColBlock} ${Styles.unknownSupplyRisk}`}/>
+          <div className={Styles.supplyRiskColText}>Unknown</div>
+        </div>
+      </div>
+    </div>
+  ) : (
+    ""
+  );
+};
 const ElementHeader = ({ value, stylesObj = { number: "", name: "" } }) => {
-  console.log(value.Name, stylesObj);
   let selectedElementsNumberClass = stylesObj.number.split(" ").pop();
   return (
     <div
-      className={Styles.header.concat(
-        " ",
-        selectedElementsNumberClass,
-        " ",
+      className={`${Styles.header} ${selectedElementsNumberClass} ${
         Styles.headerSelectedElement
-      )}
+      }`}
     >
       {value.Name}
     </div>
@@ -111,7 +133,6 @@ const ElementDescription = ({
   value,
   stylesObj = { number: "", name: "" }
 }) => {
-  console.log(value, "props desc");
   let selectedElementsNumberClass = stylesObj.number.split(" ").pop();
   let selectedElementsNameClass = stylesObj.name.split(" ").pop();
   return (
@@ -144,16 +165,12 @@ const ElementDescription = ({
         <div>{getFirstIonisationEnergy(value.ElementID)}</div>
       </div>
       <div className={Styles.bigCell}>
-        <div
-          className={Styles.bigCellLabel.concat(" ", selectedElementsNameClass)}
-        >
+        <div className={`${Styles.bigCellLabel} ${selectedElementsNameClass}`}>
           <div className={Styles.bigCellLabelIconBigText}>{value.Symbol}</div>
           <div>{value.Name}</div>
         </div>
         <div className={Styles.bigCellDescription}>
-          <div
-            className={selectedElementsNumberClass.concat(" ", Styles.white)}
-          >
+          <div className={`${selectedElementsNumberClass} ${Styles.white}`}>
             {value.AtomicNumber}
           </div>
           <div className={selectedElementsNameClass}>
@@ -169,18 +186,26 @@ class PeriodicTable extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = {
-      selectedElementDetails: {}
+      selectedElementDetails: {},
+      isHoverActive: props.isHoverActive
     };
 
     this.onHover = this.onHover.bind(this);
   }
   onHover(value, stylesObj) {
-    this.setState(state => ({ selectedElementDetails: value, stylesObj }));
+    this.setState(state => ({
+      selectedElementDetails: value,
+      stylesObj,
+      isHoverActive: true
+    }));
+  }
+
+  componentWillReceiveProps(props) {
+    this.setState(state => ({ isHoverActive: props.isHoverActive }));
   }
 
   render() {
-    console.log("rendering...");
-    console.log(Styles);
+    console.log("rendering...", this.state);
     const firstRow = ElementsData.Elements.slice(0, 2);
     const secondAndThirdRow = ElementsData.Elements.slice(2, 18);
     const FourthAndFifthRow = ElementsData.Elements.slice(18, 54);
@@ -199,10 +224,17 @@ class PeriodicTable extends React.PureComponent {
       <Container>
         <Controls />
         <GridWrapper>
-          <ElementHeader
-            value={this.state.selectedElementDetails}
-            stylesObj={this.state.stylesObj}
-          />
+          {this.state.isHoverActive ? (
+            <Fragment>
+              <ElementHeader
+                value={this.state.selectedElementDetails}
+                stylesObj={this.state.stylesObj}
+              />
+              <SupplyRisk />
+            </Fragment>
+          ) : (
+            <SupplyRisk />
+          )}
           <ElementList
             row={firstRow}
             checkAt={1}
@@ -211,10 +243,14 @@ class PeriodicTable extends React.PureComponent {
           />
         </GridWrapper>
         <GridWrapper>
-          <ElementDescription
-            value={this.state.selectedElementDetails}
-            stylesObj={this.state.stylesObj}
-          />
+          {this.state.isHoverActive ? (
+            <ElementDescription
+              value={this.state.selectedElementDetails}
+              stylesObj={this.state.stylesObj}
+            />
+          ) : (
+            <Description />
+          )}
           <ElementList
             row={secondAndThirdRow}
             className={Styles.cell}

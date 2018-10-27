@@ -90,11 +90,11 @@
   display: grid;
 }
 
-.elementDescriptionTable div{
+.elementDescriptionTable div {
   border: 1px solid red;
 }
 
-.elementDescriptionTable div{
+.elementDescriptionTable div {
   border-bottom: 0px solid red;
   border-left: 0px solid red;
 }
@@ -102,15 +102,15 @@
 .bigCell {
   display: grid;
   /* grid-template-rows: 1.5fr 1fr; */
-  color:black;
-  height: 100px;;
+  color: black;
+  height: 100px;
 }
 
 .bigCellLabel {
-    text-align: center;
-    font-family: museo_sans_700regular,Arial !important;
-    font-size: 13px;
-    background-color: #bfeaec;
+  text-align: center;
+  font-family: museo_sans_700regular, Arial !important;
+  font-size: 13px;
+  background-color: #bfeaec;
 }
 .bigCellLabelIconBigText {
   font-size: 40px;
@@ -122,7 +122,7 @@
   grid-template-columns: 1.2fr 2fr;
 }
 
-.bigCellDescription div{
+.bigCellDescription div {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -137,4 +137,66 @@
 
 .white {
   color: white;
+}
+
+.supplyRisk {
+  grid-row-start: 1;
+  grid-column-start: 13;
+  grid-column-end: 18;
+  background-color: grey;
+  background: #f2f2f4;
+  color: #636363;
+}
+
+.supplyRiskRows {
+  height: 50%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.supplyRiskCols {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.supplyRiskColBlock {
+  height: 15px;
+  width: 15px;
+  margin-left: 4px;
+  margin-right: 4px;
+}
+
+.highSupplyRisk {
+  background-color: #ed3833;
+}
+
+.lowSupplyRisk {
+  background-color: #4fab2a;
+}
+
+.mediumSupplyRisk {
+  background-color: #f4af42;
+}
+.unknownSupplyRisk {
+  background-color: #000000;
+}
+
+.supplyRiskColText {
+  font-size: 13px;
+}
+
+.supplyRisk ul {
+  padding: 0px;
+  margin: 0px;
+  list-style: none;
+  height: 100%;
+}
+
+.supplyRisk li {
+  height: -webkit-fill-available;
+  border: 1px solid black;
+  background-color: red;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
 }
