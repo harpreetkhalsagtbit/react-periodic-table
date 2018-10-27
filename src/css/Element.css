@@ -1,7 +1,7 @@
 .element {
     height: 50px;
     width: 50px;
-    margin-right: 2px;
+    /* margin-right: 2px; */
     font-family: Arial;
     /* background: url(../images/Button_bdg.png) scroll no-repeat -2px 0px #3d697c; */
     cursor: pointer;

@@ -66,21 +66,33 @@ const SupplyRisk = (isHoverActive = false) => {
     <div className={Styles.supplyRisk}>
       <div className={Styles.supplyRiskRows}>
         <div className={Styles.supplyRiskCols}>
-          <div className={`${Styles.supplyRiskColBlock} ${Styles.highSupplyRisk}`}/>
+          <div
+            className={`${Styles.supplyRiskColBlock} ${Styles.highSupplyRisk}`}
+          />
           <div className={Styles.supplyRiskColText}>High Supply Risk</div>
         </div>
         <div className={Styles.supplyRiskCols}>
-        <div className={`${Styles.supplyRiskColBlock} ${Styles.lowSupplyRisk}`}/>
+          <div
+            className={`${Styles.supplyRiskColBlock} ${Styles.lowSupplyRisk}`}
+          />
           <div className={Styles.supplyRiskColText}>Low Supply Risk</div>
         </div>
       </div>
       <div className={Styles.supplyRiskRows}>
         <div className={Styles.supplyRiskCols}>
-        <div className={`${Styles.supplyRiskColBlock} ${Styles.mediumSupplyRisk}`}/>
+          <div
+            className={`${Styles.supplyRiskColBlock} ${
+              Styles.mediumSupplyRisk
+            }`}
+          />
           <div className={Styles.supplyRiskColText}>Medium Supply Risk</div>
         </div>
         <div className={Styles.supplyRiskCols}>
-        <div className={`${Styles.supplyRiskColBlock} ${Styles.unknownSupplyRisk}`}/>
+          <div
+            className={`${Styles.supplyRiskColBlock} ${
+              Styles.unknownSupplyRisk
+            }`}
+          />
           <div className={Styles.supplyRiskColText}>Unknown</div>
         </div>
       </div>
@@ -89,16 +101,24 @@ const SupplyRisk = (isHoverActive = false) => {
     ""
   );
 };
-const ElementHeader = ({ value, stylesObj = { number: "", name: "" } }) => {
+const ElementHeader = ({ value, stylesObj = { number: "", name: "" }, supplyRiskColor="unknownSupplyRisk" }) => {
   let selectedElementsNumberClass = stylesObj.number.split(" ").pop();
   return (
-    <div
-      className={`${Styles.header} ${selectedElementsNumberClass} ${
-        Styles.headerSelectedElement
-      }`}
-    >
-      {value.Name}
-    </div>
+    <Fragment>
+      <div
+        className={`${Styles.header} ${selectedElementsNumberClass} ${
+          Styles.headerSelectedElement
+        }`}
+      >
+        <div>{value.Name}</div>
+        <div className={Styles.headerSupplyRiskBlock}>
+          <div
+            className={`${Styles.supplyRiskColBlock} ${Styles[supplyRiskColor]}`}
+          />
+          <span>Supply Risk</span>
+        </div>
+      </div>
+    </Fragment>
   );
 };
 const keyIsotopes = (elementId = 1) => {
@@ -193,9 +213,20 @@ class PeriodicTable extends React.PureComponent {
     this.onHover = this.onHover.bind(this);
   }
   onHover(value, stylesObj) {
+    let relativeSupplyIndex = "unknownSupplyRisk";
+    if (!value.RelativeSupplyRiskIndex) {
+      relativeSupplyIndex = "unknownSupplyRisk";
+    } else if (value.RelativeSupplyRiskIndex < 5) {
+      relativeSupplyIndex = "lowSupplyRisk";
+    } else if (value.RelativeSupplyRiskIndex == 5) {
+      relativeSupplyIndex = "mediumSupplyRisk";
+    } else if (value.RelativeSupplyRiskIndex > 5) {
+      relativeSupplyIndex = "highSupplyRisk";
+    }
     this.setState(state => ({
       selectedElementDetails: value,
       stylesObj,
+      supplyRiskColor: relativeSupplyIndex,
       isHoverActive: true
     }));
   }
@@ -205,7 +236,7 @@ class PeriodicTable extends React.PureComponent {
   }
 
   render() {
-    console.log("rendering...", this.state);
+    console.log("rendering...", Styles);
     const firstRow = ElementsData.Elements.slice(0, 2);
     const secondAndThirdRow = ElementsData.Elements.slice(2, 18);
     const FourthAndFifthRow = ElementsData.Elements.slice(18, 54);
@@ -229,11 +260,12 @@ class PeriodicTable extends React.PureComponent {
               <ElementHeader
                 value={this.state.selectedElementDetails}
                 stylesObj={this.state.stylesObj}
+                supplyRiskColor={this.state.supplyRiskColor}
               />
               <SupplyRisk />
             </Fragment>
           ) : (
-            <SupplyRisk />
+            <Header />
           )}
           <ElementList
             row={firstRow}
