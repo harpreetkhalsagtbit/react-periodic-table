@@ -8,6 +8,7 @@ import ElementList from "./ElementList";
 import SupplyRisk from "./SupplyRisk";
 import ElementHeader from "./ElementHeader";
 import ElementDescription from "./ElementDescription";
+import Controls from "./Controls";
 
 // Below are all Stateless Dumb Functional Components
 // or Presentational Components
@@ -16,7 +17,6 @@ const Header = () => <div className={Styles.header}>{"Periodic Table"}</div>;
 const desc =
   "The Royal Society of Chemistry's interactive periodic table features history, alchemy, podcasts, videos, and data trends across the periodic table. Click the tabs at the top to explore each section. Use the buttons above to change your view of the periodic table and view Murray Robertson’s stunning Visual Elements artwork. Click each element to read detailed information.";
 const Description = () => <div className={Styles.description}>{desc}</div>;
-const Controls = () => <div className={Styles.controls}>controls</div>;
 
 // const PeriodicTable = () => {
 class PeriodicTable extends React.PureComponent {
@@ -24,10 +24,15 @@ class PeriodicTable extends React.PureComponent {
     super(props);
     this.state = {
       selectedElementDetails: {},
-      isHoverActive: props.isHoverActive
+      isHoverActive: props.isHoverActive,
+      filter: {
+        type:"",
+        value:""
+      }
     };
 
     this.onHover = this.onHover.bind(this);
+    this.setFilter = this.setFilter.bind(this);
   }
   onHover(value, stylesObj) {
     let relativeSupplyIndex = "unknownSupplyRisk";
@@ -52,6 +57,15 @@ class PeriodicTable extends React.PureComponent {
     this.setState(state => ({ isHoverActive: props.isHoverActive }));
   }
 
+  setFilter(filter) {
+    console.log(filter)
+    // reset if same filter action is performed
+    if(this.state.filter.type === filter.type && this.state.filter.id === filter.id) {
+      filter = { id:"", type: ""}
+    }
+    this.setState(state => ({filter}))
+  }
+
   render() {
     console.log("rendering...", Styles);
     const firstRow = ElementsData.Elements.slice(0, 2);
@@ -70,7 +84,7 @@ class PeriodicTable extends React.PureComponent {
 
     return (
       <Container>
-        <Controls />
+        <Controls setFilter={this.setFilter}/>
         <GridWrapper>
           {this.state.isHoverActive ? (
             <Fragment>
@@ -89,6 +103,7 @@ class PeriodicTable extends React.PureComponent {
             checkAt={1}
             secondaryClass={Styles.He}
             onHover={this.onHover}
+            filter={this.state.filter}
           />
         </GridWrapper>
         <GridWrapper>
@@ -104,6 +119,7 @@ class PeriodicTable extends React.PureComponent {
             row={secondAndThirdRow}
             className={Styles.cell}
             onHover={this.onHover}
+            filter={this.state.filter}
           />
         </GridWrapper>
         <GridWrapper>
@@ -111,6 +127,7 @@ class PeriodicTable extends React.PureComponent {
             row={FourthAndFifthRow}
             className={Styles.cell}
             onHover={this.onHover}
+            filter={this.state.filter}
           />
         </GridWrapper>
         <GridWrapper>
@@ -118,6 +135,7 @@ class PeriodicTable extends React.PureComponent {
             row={SixthRow}
             className={Styles.cell}
             onHover={this.onHover}
+            filter={this.state.filter}
           />
         </GridWrapper>
         <GridWrapper>
@@ -125,6 +143,7 @@ class PeriodicTable extends React.PureComponent {
             row={SeventhRow}
             className={Styles.cell}
             onHover={this.onHover}
+            filter={this.state.filter}
           />
         </GridWrapper>
         <GridWrapper>
@@ -133,6 +152,7 @@ class PeriodicTable extends React.PureComponent {
             checkAt={0}
             secondaryClass={Styles.fBlock}
             onHover={this.onHover}
+            filter={this.state.filter}
           />
         </GridWrapper>
         <GridWrapper>
@@ -141,6 +161,7 @@ class PeriodicTable extends React.PureComponent {
             checkAt={0}
             secondaryClass={Styles.fBlock}
             onHover={this.onHover}
+            filter={this.state.filter}
           />
         </GridWrapper>
       </Container>

@@ -1,9 +1,20 @@
 import React, { Fragment } from "react";
 import Styles from "../../css/Element.css";
 
-let getELementSpecificProperties = (elementId, groupId, className) => {
+let getELementSpecificProperties = ({elementId, groupId, blockId, periodId, className, filter}) => {
   let obj = {};
 
+  if (filter.type === "group" && filter.id !== groupId.toString()) {
+    groupId = "default";
+  } else if (filter.type === "block" && filter.id !== blockId.toString()) {
+    groupId = "default";
+  } else if (filter.type === "period" && filter.id !== periodId.toString()) {
+    groupId = "default";
+  } else if (filter.type === "lanthanides" && !(elementId >= 57 && elementId <=71 )) {
+    groupId = "default";
+  } else if (filter.type === "actinides" && !(elementId >= 89 && elementId <=103 )) {
+    groupId = "default";
+  }
   switch (groupId) {
     case 1:
       if (elementId == 1) {
@@ -102,30 +113,42 @@ let getELementSpecificProperties = (elementId, groupId, className) => {
     default:
       obj = {
         cell: `${className} ${Styles.element}`,
-        name: Styles.elementName,
-        number: Styles.elementNo
+        name: Styles.elementNameDefault,
+        number: Styles.elementNoDefault
       };
       break;
   }
   return obj;
 };
 
-
-const Element = ({ index, className, value, onHover }) => {
-  const onMouseOver = (e) => {
+const Element = ({ index, className, value, onHover, filter }) => {
+  const onMouseOver = e => {
     e.stopPropagation();
-    onHover(value, stylesObj)
-  }
-  
-  let stylesObj = getELementSpecificProperties(
-    value.ElementID,
-    value.GroupID,
-    className
-  );
+    onHover(value, stylesObj);
+  };
+
+  const obj = {
+    elementId: value.ElementID,
+    groupId: value.GroupID,
+    blockId: value.BlockID,
+    periodId: value.PeriodID,
+    className,
+    filter
+}
+
+  const MurrayImageWidth = [
+    "2", "55", "108", "160", "213", "266", "319", "371", "424", "477", "530", "582", "635", "688", "741", "794", "847"
+  ]
+  let stylesObj = getELementSpecificProperties(obj);
+  const pStyle = {
+    "background": 'url(http://sod-a.rsc-cdn.org/www.rsc.org/periodic-table/content/Images/Button_bdg_Murry.png) scroll no-repeat -2px 0px transparent',
+    "backgroundPosition": `-${MurrayImageWidth[(value.ElementID-1)%17]}px -${72*(Math.ceil((value.ElementID/17) -1))}px`
+  };
+
   return (
-    <div key={index} className={stylesObj.cell} onMouseOver={onMouseOver}>
-      <div className={stylesObj.name}>{value.Symbol}</div>
-      <div className={stylesObj.number}>{value.ElementID}</div>
+    <div key={index} className={stylesObj.cell} style={pStyle} onMouseOver={onMouseOver}>
+    {filter.type !== "visualElements"?<div className={stylesObj.name}>{value.Symbol}</div>:""}
+    {filter.type !== "visualElements"?<div className={stylesObj.number}>{value.ElementID}</div>:""}
     </div>
   );
 };

@@ -1,0 +1,22 @@
+.wrapper {
+    display: flex;
+    justify-content: space-between;
+}
+.container {
+    display: flex;
+}
+.container span{
+    background-color: rgb(72, 12, 60);
+    color: white;
+    padding: 2px;
+    margin: 1px;
+}
+
+/* .container span:hover {
+    border: 1px solid black;
+    height: 17px !important;
+} */
+
+.blocks {
+    margin-left: 50px;
+}

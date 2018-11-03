@@ -12,19 +12,44 @@
     width:50px;
     font-family: museo_sans_700regular,Arial !important;
     font-size: 18px;
-    background-color: bisque;
+    background-color: #f4f3f2;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
+.elementNameDefault {
+    text-align: center;
+    height: 30px;
+    width:50px;
+    font-family: museo_sans_700regular,Arial !important;
+    font-size: 18px;
+    background-color: #f4f3f2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #999999;
+}
+
+.elementNoDefault {
+    height: 20px;
+    text-align: center;
+    font-family: museo_sans_500regular,Arial !important;
+    font-size: 11px;
+    background-color: #f4f3f2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #999999;
+}
+
 .elementNo {
     height: 20px;
     text-align: center;
-    color: white;
+    color: black;
     font-family: museo_sans_500regular,Arial !important;
     font-size: 11px;
-    background-color: black;
+    background-color: #f4f3f2;
     display: flex;
     justify-content: center;
     align-items: center;

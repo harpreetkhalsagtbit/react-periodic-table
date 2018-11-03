@@ -12,7 +12,7 @@ import Styles from "../../css/PeriodicTable.css";
 // a Stateless Class Component or StateFull Class Component
 // A Statefull Class Component is actually a Layout Component and
 // A Stateless Functional Component is a Container Component
-const ElementList = ({ row, checkAt = null, secondaryClass = "", onHover }) => (
+const ElementList = ({ row, checkAt = null, secondaryClass = "", onHover, filter }) => (
   <Fragment>
     {row.map((v, key) => (
       <Element
@@ -23,6 +23,7 @@ const ElementList = ({ row, checkAt = null, secondaryClass = "", onHover }) => (
           key === checkAt ? `${Styles.cell} ${secondaryClass}` : Styles.cell
         }
         value={v}
+        filter={filter}
       />
     ))}
   </Fragment>
