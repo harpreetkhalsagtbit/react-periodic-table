@@ -4,6 +4,9 @@ import GroupFilter from "./GroupFilter";
 import BlockFilter from "./BlockFilter";
 import PeriodFilter from "./PeriodFilter";
 import VisualElementFilter from "./VisualElementFilter";
+import MetalFilter from "./MetalFilter";
+import NonMetalFilter from "./NonMetalFilter";
+import ClearFilter from "./ClearFilter";
 import Slider from "./Common/Slider";
 
 import Styles from "../../css/Controls.css";
@@ -21,9 +24,9 @@ const Controls = ({ setFilter }) => (
       </div>
       <div className={Styles.container}>
         <label>Classification</label>
-        <span>Metal</span>
-        <span>Non Metal</span>
-        <span>Clear filters</span>
+        <MetalFilter setFilter={setFilter}></MetalFilter>
+        <NonMetalFilter setFilter={setFilter}></NonMetalFilter>
+        <ClearFilter setFilter={setFilter}></ClearFilter>
       </div>
     </div>
     <div className={Styles.wrapper}>

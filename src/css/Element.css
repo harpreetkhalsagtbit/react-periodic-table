@@ -62,7 +62,23 @@
 .hydrogenNumber {
     background-color: #3d697c;
 }
+.unknownText {
+    color:#404040;
+}
 
+.unknownName {
+    background-color: #b2b2b2;
+}
+
+.unknownNumber {
+    background-color: #b2b2b2;
+}
+
+/* Metalloid */
+.metalloid {
+    border: 2px dashed #404040;
+}
+/* Groups */
 .groupOneName {
     background-color: #ebbfd8;
 }

@@ -1,7 +1,13 @@
 import React, { Fragment } from "react";
 import Styles from "../../css/Element.css";
 
-let getELementSpecificProperties = ({elementId, groupId, blockId, periodId, className, filter}) => {
+let getELementSpecificProperties = ({ value, className, filter }) => {
+  let {
+    ElementID: elementId,
+    GroupID: groupId,
+    BlockID: blockId,
+    PeriodID: periodId
+  } = value;
   let obj = {};
 
   if (filter.type === "group" && filter.id !== groupId.toString()) {
@@ -10,10 +16,28 @@ let getELementSpecificProperties = ({elementId, groupId, blockId, periodId, clas
     groupId = "default";
   } else if (filter.type === "period" && filter.id !== periodId.toString()) {
     groupId = "default";
-  } else if (filter.type === "lanthanides" && !(elementId >= 57 && elementId <=71 )) {
+  } else if (
+    filter.type === "lanthanides" &&
+    !(elementId >= 57 && elementId <= 71)
+  ) {
     groupId = "default";
-  } else if (filter.type === "actinides" && !(elementId >= 89 && elementId <=103 )) {
+  } else if (
+    filter.type === "actinides" &&
+    !(elementId >= 89 && elementId <= 103)
+  ) {
     groupId = "default";
+  } else if (filter.type === "metals" && value.PropertyID == "1") {
+    // do nothing
+  } else if (filter.type === "metals" && value.PropertyID == "2") {
+    groupId = "default";
+  } else if (filter.type === "metals" && value.PropertyID == "4") {
+    groupId = "unknown";
+  } else if (filter.type === "non-metals" && value.PropertyID == "1") {
+    groupId = "default";
+  } else if (filter.type === "non-metals" && value.PropertyID == "2") {
+    // do nothing
+  } else if (filter.type === "non-metals" && value.PropertyID == "4") {
+    groupId = "unknown";
   }
   switch (groupId) {
     case 1:
@@ -110,6 +134,22 @@ let getELementSpecificProperties = ({elementId, groupId, blockId, periodId, clas
         number: Styles.elementNo.concat(" ", Styles.groupTwentyNumber)
       };
       break;
+    case "metalloid":
+      obj = {
+        cell: `${className} ${Styles.element} ${Styles.unknownText}`,
+        name: `${Styles.elementName} ${Styles.groupTwentyName}`,
+        number: Styles.elementNo.concat(" ", Styles.groupTwentyNumber)
+      };
+      break;
+
+    case "unknown":
+      obj = {
+        cell: `${className} ${Styles.element}`,
+        name: `${Styles.elementName} ${Styles.unknownName}`,
+        number: Styles.elementNo.concat(" ", Styles.unknownNumber)
+      };
+      break;
+
     default:
       obj = {
         cell: `${className} ${Styles.element}`,
@@ -118,6 +158,13 @@ let getELementSpecificProperties = ({elementId, groupId, blockId, periodId, clas
       };
       break;
   }
+  // add metaloid css
+  if (filter.type === "metals" && value.PropertyID == "3") {
+    obj.cell = obj.cell.concat(" ", Styles.metalloid);
+  } else if (filter.type === "non-metals" && value.PropertyID == "3") {
+    obj.cell = obj.cell.concat(" ", Styles.metalloid);
+  }
+
   return obj;
 };
 
@@ -128,27 +175,56 @@ const Element = ({ index, className, value, onHover, filter }) => {
   };
 
   const obj = {
-    elementId: value.ElementID,
-    groupId: value.GroupID,
-    blockId: value.BlockID,
-    periodId: value.PeriodID,
+    value,
     className,
     filter
-}
+  };
 
   const MurrayImageWidth = [
-    "2", "55", "108", "160", "213", "266", "319", "371", "424", "477", "530", "582", "635", "688", "741", "794", "847"
-  ]
+    "2",
+    "55",
+    "108",
+    "160",
+    "213",
+    "266",
+    "319",
+    "371",
+    "424",
+    "477",
+    "530",
+    "582",
+    "635",
+    "688",
+    "741",
+    "794",
+    "847"
+  ];
   let stylesObj = getELementSpecificProperties(obj);
   const pStyle = {
-    "background": 'url(http://sod-a.rsc-cdn.org/www.rsc.org/periodic-table/content/Images/Button_bdg_Murry.png) scroll no-repeat -2px 0px transparent',
-    "backgroundPosition": `-${MurrayImageWidth[(value.ElementID-1)%17]}px -${72*(Math.ceil((value.ElementID/17) -1))}px`
+    background:
+      "url(http://sod-a.rsc-cdn.org/www.rsc.org/periodic-table/content/Images/Button_bdg_Murry.png) scroll no-repeat -2px 0px transparent",
+    backgroundPosition: `-${
+      MurrayImageWidth[(value.ElementID - 1) % 17]
+    }px -${72 * Math.ceil(value.ElementID / 17 - 1)}px`
   };
 
   return (
-    <div key={index} className={stylesObj.cell} style={pStyle} onMouseOver={onMouseOver}>
-    {filter.type !== "visualElements"?<div className={stylesObj.name}>{value.Symbol}</div>:""}
-    {filter.type !== "visualElements"?<div className={stylesObj.number}>{value.ElementID}</div>:""}
+    <div
+      key={index}
+      className={stylesObj.cell}
+      style={pStyle}
+      onMouseOver={onMouseOver}
+    >
+      {filter.type !== "visualElements" ? (
+        <div className={stylesObj.name}>{value.Symbol}</div>
+      ) : (
+        ""
+      )}
+      {filter.type !== "visualElements" ? (
+        <div className={stylesObj.number}>{value.ElementID}</div>
+      ) : (
+        ""
+      )}
     </div>
   );
 };

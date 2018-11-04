@@ -35,22 +35,24 @@ class PeriodicTable extends React.PureComponent {
     this.setFilter = this.setFilter.bind(this);
   }
   onHover(value, stylesObj) {
-    let relativeSupplyIndex = "unknownSupplyRisk";
-    if (!value.RelativeSupplyRiskIndex) {
-      relativeSupplyIndex = "unknownSupplyRisk";
-    } else if (value.RelativeSupplyRiskIndex < 5) {
-      relativeSupplyIndex = "lowSupplyRisk";
-    } else if (value.RelativeSupplyRiskIndex == 5) {
-      relativeSupplyIndex = "mediumSupplyRisk";
-    } else if (value.RelativeSupplyRiskIndex > 5) {
-      relativeSupplyIndex = "highSupplyRisk";
+    if(!this.state.filter.id && !this.state.filter.type) {
+      let relativeSupplyIndex = "unknownSupplyRisk";
+      if (!value.RelativeSupplyRiskIndex) {
+        relativeSupplyIndex = "unknownSupplyRisk";
+      } else if (value.RelativeSupplyRiskIndex < 5) {
+        relativeSupplyIndex = "lowSupplyRisk";
+      } else if (value.RelativeSupplyRiskIndex == 5) {
+        relativeSupplyIndex = "mediumSupplyRisk";
+      } else if (value.RelativeSupplyRiskIndex > 5) {
+        relativeSupplyIndex = "highSupplyRisk";
+      }
+      this.setState(state => ({
+        selectedElementDetails: value,
+        stylesObj,
+        supplyRiskColor: relativeSupplyIndex,
+        isHoverActive: true
+      }));
     }
-    this.setState(state => ({
-      selectedElementDetails: value,
-      stylesObj,
-      supplyRiskColor: relativeSupplyIndex,
-      isHoverActive: true
-    }));
   }
 
   componentWillReceiveProps(props) {
