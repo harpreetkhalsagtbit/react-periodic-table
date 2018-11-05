@@ -1,7 +1,8 @@
-import React, { Fragment } from "react";
+import React from "react";
 import Styles from "../../css/Element.css";
 
 let getELementSpecificProperties = ({ value, className, filter }) => {
+  console.log(filter)
   let {
     ElementID: elementId,
     GroupID: groupId,
@@ -38,7 +39,21 @@ let getELementSpecificProperties = ({ value, className, filter }) => {
     // do nothing
   } else if (filter.type === "non-metals" && value.PropertyID == "4") {
     groupId = "unknown";
+  } else if (filter.type === "temperature" && filter.id) {
+    console.log("filter temperature")
+    if(+(filter.id) < +(value.MeltingPointK)) {
+      groupId = "solid"
+    } else if(+(filter.id) >= +(value.MeltingPointK) && +(filter.id) < +(value.BoilingPointK)) {
+      groupId = "liquid"
+    } else if(+(filter.id) >= +(value.BoilingPointK)) {
+      groupId = "gas"
+      if(!value.BoilingPointK) {
+        groupId = "unknown"
+      }
+    }
+
   }
+
   switch (groupId) {
     case 1:
       if (elementId == 1) {
@@ -150,6 +165,31 @@ let getELementSpecificProperties = ({ value, className, filter }) => {
       };
       break;
 
+    case "solid":
+      obj = {
+        cell: `${className} ${Styles.element}`,
+        name: `${Styles.elementName} ${Styles.solid}`,
+        number: Styles.elementNo.concat(" ", Styles.solid)
+      };
+      break;
+
+    case "liquid":
+      obj = {
+        cell: `${className} ${Styles.element}`,
+        name: `${Styles.elementName} ${Styles.liquid}`,
+        number: Styles.elementNo.concat(" ", Styles.liquid)
+      };
+      break;
+
+    case "gas":
+      obj = {
+        cell: `${className} ${Styles.element}`,
+        name: `${Styles.elementName} ${Styles.gas}`,
+        number: Styles.elementNo.concat(" ", Styles.gas)
+      };
+      console.log(obj)
+      break;
+
     default:
       obj = {
         cell: `${className} ${Styles.element}`,
@@ -179,7 +219,7 @@ const Element = ({ index, className, value, onHover, filter }) => {
     className,
     filter
   };
-
+  console.log("here inside element")
   const MurrayImageWidth = [
     "2",
     "55",
@@ -205,7 +245,7 @@ const Element = ({ index, className, value, onHover, filter }) => {
       "url(http://sod-a.rsc-cdn.org/www.rsc.org/periodic-table/content/Images/Button_bdg_Murry.png) scroll no-repeat -2px 0px transparent",
     backgroundPosition: `-${
       MurrayImageWidth[(value.ElementID - 1) % 17]
-    }px -${72 * Math.ceil(value.ElementID / 17 - 1)}px`
+      }px -${72 * Math.ceil(value.ElementID / 17 - 1)}px`
   };
 
   return (
@@ -218,13 +258,13 @@ const Element = ({ index, className, value, onHover, filter }) => {
       {filter.type !== "visualElements" ? (
         <div className={stylesObj.name}>{value.Symbol}</div>
       ) : (
-        ""
-      )}
+          ""
+        )}
       {filter.type !== "visualElements" ? (
         <div className={stylesObj.number}>{value.ElementID}</div>
       ) : (
-        ""
-      )}
+          ""
+        )}
     </div>
   );
 };

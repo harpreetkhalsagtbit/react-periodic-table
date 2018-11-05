@@ -7,7 +7,7 @@ import VisualElementFilter from "./VisualElementFilter";
 import MetalFilter from "./MetalFilter";
 import NonMetalFilter from "./NonMetalFilter";
 import ClearFilter from "./ClearFilter";
-import Slider from "./Common/Slider";
+import TemperatureFilter from "./TemperatureFilter";
 
 import Styles from "../../css/Controls.css";
 
@@ -15,13 +15,7 @@ const Controls = ({ setFilter }) => (
   <Fragment>
     <div className={Styles.wrapper}>
       <VisualElementFilter setFilter={setFilter}/>
-      <div className={Styles.container}>
-        <label>Temperature 0 K</label>
-        <span>-</span>
-        <Slider id="my" min="0" max="6000" />
-        <span>+</span>
-        <label>6000 K</label>
-      </div>
+      <TemperatureFilter  setFilter={setFilter}/>
       <div className={Styles.container}>
         <label>Classification</label>
         <MetalFilter setFilter={setFilter}></MetalFilter>

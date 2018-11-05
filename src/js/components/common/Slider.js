@@ -9,21 +9,19 @@ class Slider extends React.PureComponent {
         this.state = {
             value:"0"
         }
-        this.onChange = this.onChange.bind(this)
+        this.onInput = this.onInput.bind(this)
     }
 
     componentDidMount() {
         this.slider = document.getElementById(this.props.id);
-        console.log(this.props, this.slider)
     }
-    onChange(e) {
-        console.log(this.slider.value, this.props.id)
-        this.setState(state => ({
-            value:this.slider.value
-        }));
+    onInput(e) {
+        this.setState({value:this.slider.value}, () => {
+            this.props.handleChange(this.state.value)
+        });
     }
     render() {
-       return <input type="range" {...this.props} onInput={this.onChange} value={this.state.value}></input>
+       return <input type="range" {...this.props} onInput={this.onInput} value={this.state.value}></input>
     }
 }
 export default Slider;

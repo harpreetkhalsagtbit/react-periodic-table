@@ -74,6 +74,18 @@
     background-color: #b2b2b2;
 }
 
+.solid {
+    background-color: #beeafd;
+}
+
+.liquid {
+    background-color: #3ea5e5;
+}
+
+.gas {
+    background-color: #abd950;
+}
+
 /* Metalloid */
 .metalloid {
     border: 2px dashed #404040;
