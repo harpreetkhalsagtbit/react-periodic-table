@@ -24,7 +24,7 @@ class PeriodicTable extends React.PureComponent {
     super(props);
     this.state = {
       selectedElementDetails: {},
-      isHoverActive: props.isHoverActive,
+      isHoverActive: false,
       filter: {
         type:"",
         value:""
@@ -32,6 +32,7 @@ class PeriodicTable extends React.PureComponent {
     };
 
     this.onHover = this.onHover.bind(this);
+    this.onMouseLeave = this.onMouseLeave.bind(this);
     this.setFilter = this.setFilter.bind(this);
   }
   onHover(value, stylesObj) {
@@ -68,6 +69,10 @@ class PeriodicTable extends React.PureComponent {
     this.setState(state => ({filter}))
   }
 
+  onMouseLeave() {
+    this.setState({isHoverActive:false})
+  }
+
   render() {
     console.log("rendering...", Styles);
     const firstRow = ElementsData.Elements.slice(0, 2);
@@ -85,7 +90,7 @@ class PeriodicTable extends React.PureComponent {
     const NinthRow = ElementsData.Elements.slice(89, 103);
 
     return (
-      <Container>
+      <Container onMouseLeave={this.onMouseLeave}>
         <Controls setFilter={this.setFilter}/>
         <GridWrapper>
           {this.state.isHoverActive ? (

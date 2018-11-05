@@ -7,8 +7,12 @@ import Styles from "../../css/PeriodicTable.css";
 // with returning value to be false always to prevent unnecessary rendering
 // This could be either a Stateless or Statefull Class Component
 class Container extends React.PureComponent {
+  constructor(props) {
+    super(props)
+  }
+
   render() {
-    return <div className={Styles.container}>{this.props.children}</div>;
+    return <div className={Styles.container} onMouseLeave={this.props.onMouseLeave}>{this.props.children}</div>;
   }
 }
 

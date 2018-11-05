@@ -4,26 +4,21 @@ import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import PeriodicTable from "../../components/PeriodicTable";
 
-class Home extends React.Component  {
+class Home extends React.PureComponent  {
   constructor(props) {
     super(props)
     this.state = {
       isHoverActive:false
     }
-    this.onMouseOver = this.onMouseOver.bind(this);
-
   }
 
-  onMouseOver(e) {
-    this.setState(state => ({isHoverActive:false}))
-  }
   render() {
     return (
       <Fragment>
         <Header />
         <main onMouseOver={this.onMouseOver}>
           <p>Hello World of React and Webpack!</p>
-          <PeriodicTable isHoverActive={this.state.isHoverActive}/>
+          <PeriodicTable/>
         </main>
         <Footer />
       </Fragment>

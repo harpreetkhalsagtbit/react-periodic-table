@@ -1,8 +1,9 @@
 .container {
   margin: auto;
-  width: 70%;
+  width: 80%;
   display: grid;
   grid-gap: 3px;
+  padding: 5px;
 }
 
 .controls {
