@@ -1,11 +1,15 @@
 import React, { Fragment } from "react";
 
+import { BLOCK } from "./common/Constants";
 import Styles from "../../css/Controls.css";
 const BlockFilter = ({ setFilter }) => {
   const onClick = e => {
+    const id = e.target.getAttribute("data-block-id");
     setFilter({
-      id: e.target.getAttribute("data-block-id"),
-      type: "block"
+      id,
+      type: "block",
+      header:BLOCK[id].HEADER_TEXT,
+      desc:BLOCK[id].DESCRIPTION_TEXT
     });
   };
 

@@ -9,26 +9,30 @@ import SupplyRisk from "./SupplyRisk";
 import ElementHeader from "./ElementHeader";
 import ElementDescription from "./ElementDescription";
 import Controls from "./Controls";
+import FilterHeader from "./FilterHeader";
+import FilterDescription from "./FilterDescription";
+
+import { DEFAULT } from "./common/Constants";
 
 // Below are all Stateless Dumb Functional Components
 // or Presentational Components
 // or View Only Components
 const Header = () => <div className={Styles.header}>{"Periodic Table"}</div>;
-const desc =
-  "The Royal Society of Chemistry's interactive periodic table features history, alchemy, podcasts, videos, and data trends across the periodic table. Click the tabs at the top to explore each section. Use the buttons above to change your view of the periodic table and view Murray Robertson’s stunning Visual Elements artwork. Click each element to read detailed information.";
-const Description = () => <div className={Styles.description}>{desc}</div>;
 
 // const PeriodicTable = () => {
 class PeriodicTable extends React.PureComponent {
   constructor(props) {
     super(props);
+
     this.state = {
       selectedElementDetails: {},
       isHoverActive: false,
       filter: {
         type:"",
-        value:""
-      }
+        value:"",
+        header: DEFAULT.HEADER_TEXT,
+        desc: DEFAULT.DESCRIPTION_TEXT
+      },
     };
 
     this.onHover = this.onHover.bind(this);
@@ -64,7 +68,12 @@ class PeriodicTable extends React.PureComponent {
     console.log(filter)
     // reset if same filter action is performed
     if(this.state.filter.type === filter.type && this.state.filter.id === filter.id) {
-      filter = { id:"", type: ""}
+      filter = {
+        id:"",
+        type: "",
+        header: DEFAULT.HEADER_TEXT,
+        desc: DEFAULT.DESCRIPTION_TEXT
+      }
     }
     this.setState(state => ({filter}))
   }
@@ -103,7 +112,7 @@ class PeriodicTable extends React.PureComponent {
               {this.state.isHoverActive?<SupplyRisk />:""}
             </Fragment>
           ) : (
-            <Header />
+            <FilterHeader header={this.state.filter.header} />
           )}
           <ElementList
             row={firstRow}
@@ -120,7 +129,7 @@ class PeriodicTable extends React.PureComponent {
               stylesObj={this.state.stylesObj}
             />
           ) : (
-            <Description />
+            <FilterDescription desc={this.state.filter.desc}/>
           )}
           <ElementList
             row={secondAndThirdRow}

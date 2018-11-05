@@ -1,5 +1,6 @@
 import React, { Fragment } from "react";
 
+import { GROUP } from "./common/Constants";
 const groupLength = 18;
 
 const generateGroupFilter = onClick => {
@@ -11,9 +12,12 @@ const generateGroupFilter = onClick => {
 };
 const GroupFilter = ({ setFilter }) => {
   const onClick = e => {
+    const id = e.target.getAttribute("data-group-id");
     setFilter({
-      id: e.target.getAttribute("data-group-id"),
-      type: "group"
+      id,
+      type: "group",
+      header: GROUP[id].HEADER_TEXT,
+      desc: GROUP[id].DESCRIPTION_TEXT
     });
   };
 

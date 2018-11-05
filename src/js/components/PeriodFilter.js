@@ -1,6 +1,8 @@
 import React, { Fragment } from "react";
 
 import Styles from "../../css/Controls.css";
+import { PERIOD, LANTHANIDES, ACTINIDES } from "./common/Constants";
+
 const periodLength = 7;
 
 const generatePeriodFilter = onClick => {
@@ -12,21 +14,28 @@ const generatePeriodFilter = onClick => {
 };
 const PeriodFilter = ({ setFilter }) => {
   const onClick = e => {
+    const id = e.target.getAttribute("data-period-id");
     setFilter({
       id: e.target.getAttribute("data-period-id"),
-      type: "period"
+      type: "period",
+      header: PERIOD[id].HEADER_TEXT,
+      desc: PERIOD[id].DESCRIPTION_TEXT
     });
   };
   const onClickLanthanides = () => {
     setFilter({
       id: "",
-      type: "lanthanides"
+      type: "lanthanides",
+      header: LANTHANIDES.HEADER_TEXT,
+      desc: LANTHANIDES.DESCRIPTION_TEXT
     });
   };
   const onClickActindes = () => {
     setFilter({
       id: "",
-      type: "actinides"
+      type: "actinides",
+      header: ACTINIDES.HEADER_TEXT,
+      desc: ACTINIDES.DESCRIPTION_TEXT
     });
   };
   return (
