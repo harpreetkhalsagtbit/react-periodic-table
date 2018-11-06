@@ -1,8 +1,8 @@
 import React, { Fragment } from "react";
 import Styles from "../../css/TemperatureFilterDescription.css";
 
-const TemperatureFilterDescription = ({ id }) => {
-    const tempInKelvin = id;
+const TemperatureFilterDescription = ({ value }) => {
+    const tempInKelvin = value;
     function convertKelvinToCelsius(kelvin) {
         if (kelvin < (0)) {
             return 'below absolute zero (0 K)';

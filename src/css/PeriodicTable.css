@@ -71,6 +71,10 @@
   color: #636363;
 }
 
+.fBlockMargin {
+  margin-top: 30px;
+}
+
 .He {
   grid-column-start: 18;
 }

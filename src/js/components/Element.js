@@ -39,16 +39,20 @@ let getELementSpecificProperties = ({ value, className, filter }) => {
     // do nothing
   } else if (filter.type === "non-metals" && value.PropertyID == "4") {
     groupId = "unknown";
-  } else if (filter.type === "temperature" && filter.id) {
+  } else if (filter.type === "temperature" && filter.value) {
     console.log("filter temperature")
-    if(+(filter.id) < +(value.MeltingPointK)) {
+    if(+(filter.value) < +(value.MeltingPointK)) {
       groupId = "solid"
-    } else if(+(filter.id) >= +(value.MeltingPointK) && +(filter.id) < +(value.BoilingPointK)) {
+    } else if(+(filter.value) >= +(value.MeltingPointK) && +(filter.value) < +(value.BoilingPointK)) {
       groupId = "liquid"
-    } else if(+(filter.id) >= +(value.BoilingPointK)) {
+    } else if(+(filter.value) >= +(value.BoilingPointK)) {
       groupId = "gas"
       if(!value.BoilingPointK) {
-        groupId = "unknown"
+        // Exception for Carbon and Arseninc, No boiling Point exist but RSC 
+        // table displays them as Gas
+        if(value.ElementID != 6 && value.ElementID != 33) {
+          groupId = "unknown"
+        }
       }
     }
 

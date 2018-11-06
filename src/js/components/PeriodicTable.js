@@ -6,8 +6,7 @@ import Container from "./Container";
 import GridWrapper from "./GridWrapper";
 import ElementList from "./ElementList";
 import SupplyRisk from "./SupplyRisk";
-import ElementHeader from "./ElementHeader";
-import ElementDescription from "./ElementDescription";
+import ElementDescriptionContainer from "./ElementDescriptionContainer";
 import Controls from "./Controls";
 import FilterHeader from "./FilterHeader";
 import FilterDescription from "./FilterDescription";
@@ -29,6 +28,7 @@ class PeriodicTable extends React.PureComponent {
       selectedElementDetails: {},
       isHoverActive: false,
       filter: {
+        id:"",
         type:"",
         value:"",
         header: DEFAULT.HEADER_TEXT,
@@ -41,6 +41,7 @@ class PeriodicTable extends React.PureComponent {
     this.setFilter = this.setFilter.bind(this);
   }
   onHover(value, stylesObj) {
+    console.log("onHover....")
     if(!this.state.filter.id && !this.state.filter.type) {
       let relativeSupplyIndex = "unknownSupplyRisk";
       if (!value.RelativeSupplyRiskIndex) {
@@ -68,15 +69,16 @@ class PeriodicTable extends React.PureComponent {
   setFilter(filter) {
     console.log(filter)
     // reset if same filter action is performed
-    if(this.state.filter.type === filter.type && this.state.filter.id === filter.id) {
+    if(this.state.filter.type === filter.type && this.state.filter.id === filter.id && this.state.filter.type != "temperature") {
       filter = {
         id:"",
         type: "",
+        value:"",
         header: DEFAULT.HEADER_TEXT,
         desc: DEFAULT.DESCRIPTION_TEXT
       }
     }
-    this.setState(state => ({filter}))
+    this.setState(state => ({filter, isHoverActive:false}))
   }
 
   onMouseLeave() {
@@ -89,102 +91,49 @@ class PeriodicTable extends React.PureComponent {
       ElementsData.Elements.slice(71, 89),
       ElementsData.Elements.slice(103, 118),
     );
-    const secondAndThirdRow = ElementsData.Elements.slice(2, 18);
-    const FourthAndFifthRow = ElementsData.Elements.slice(18, 54);
-    const SixthRow = [].concat(
-      ElementsData.Elements.slice(54, 57),
-      ElementsData.Elements.slice(71, 86)
-    );
-    const SeventhRow = [].concat(
-      ElementsData.Elements.slice(86, 89),
-      ElementsData.Elements.slice(103, 118)
-    );
-    const EigthRow = ElementsData.Elements.slice(57, 71);
-    const NinthRow = ElementsData.Elements.slice(89, 103);
+    const secondRow = ElementsData.Elements.slice(57, 71);
+    const thirdRow = ElementsData.Elements.slice(89, 103);
 
     return (
       <Container onMouseLeave={this.onMouseLeave}>
         <Controls setFilter={this.setFilter}/>
         <GridWrapper>
-          {/* {this.state.isHoverActive ? (
+          {this.state.isHoverActive ? (
             <Fragment>
-              <FilterDescription/>
-              <ElementHeader
+              <ElementDescriptionContainer
                 value={this.state.selectedElementDetails}
                 stylesObj={this.state.stylesObj}
-                supplyRiskColor={this.state.supplyRiskColor}
-              />
+                supplyRiskColor={this.state.supplyRiskColor}>
+              </ElementDescriptionContainer>
               {this.state.isHoverActive?<SupplyRisk />:""}
             </Fragment>
           ) : (
             <DescriptionContainer filter={this.state.filter}/>
-            // <FilterHeader header={this.state.filter.header} />
-          )} */}
-          <DescriptionContainer filter={this.state.filter}/>
+          )}
           <ElementList
             row={firstRow}
             onHover={this.onHover}
             filter={this.state.filter}
           />
         </GridWrapper>
-        {/* <GridWrapper>
-          {this.state.isHoverActive ? (
-            <ElementDescription
-              value={this.state.selectedElementDetails}
-              stylesObj={this.state.stylesObj}
+        <GridWrapper secondaryClass={Styles.fBlockMargin}>
+          <ElementList
+              row={secondRow}
+              onHover={this.onHover}
+              filter={this.state.filter}
+              checkAt={0}
+              secondaryClass={Styles.fBlock}
             />
-          ) : (
-            <FilterDescription desc={this.state.filter.desc}/>
-          )}
-          <ElementList
-            row={secondAndThirdRow}
-            className={Styles.cell}
-            onHover={this.onHover}
-            filter={this.state.filter}
-          />
         </GridWrapper>
         <GridWrapper>
           <ElementList
-            row={FourthAndFifthRow}
-            className={Styles.cell}
-            onHover={this.onHover}
-            filter={this.state.filter}
-          />
+              row={thirdRow}
+              onHover={this.onHover}
+              filter={this.state.filter}
+              checkAt={0}
+              secondaryClass={Styles.fBlock}
+              />
         </GridWrapper>
-        <GridWrapper>
-          <ElementList
-            row={SixthRow}
-            className={Styles.cell}
-            onHover={this.onHover}
-            filter={this.state.filter}
-          />
-        </GridWrapper>
-        <GridWrapper>
-          <ElementList
-            row={SeventhRow}
-            className={Styles.cell}
-            onHover={this.onHover}
-            filter={this.state.filter}
-          />
-        </GridWrapper>
-        <GridWrapper>
-          <ElementList
-            row={EigthRow}
-            checkAt={0}
-            secondaryClass={Styles.fBlock}
-            onHover={this.onHover}
-            filter={this.state.filter}
-          />
-        </GridWrapper>
-        <GridWrapper>
-          <ElementList
-            row={NinthRow}
-            checkAt={0}
-            secondaryClass={Styles.fBlock}
-            onHover={this.onHover}
-            filter={this.state.filter}
-          />
-        </GridWrapper> */}
       </Container>
     );
   }
