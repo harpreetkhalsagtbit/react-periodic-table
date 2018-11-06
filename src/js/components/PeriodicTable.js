@@ -11,6 +11,7 @@ import ElementDescription from "./ElementDescription";
 import Controls from "./Controls";
 import FilterHeader from "./FilterHeader";
 import FilterDescription from "./FilterDescription";
+import DescriptionContainer from "./DescriptionContainer";
 
 import { DEFAULT } from "./common/Constants";
 
@@ -84,7 +85,10 @@ class PeriodicTable extends React.PureComponent {
 
   render() {
     console.log("rendering...", Styles);
-    const firstRow = ElementsData.Elements.slice(0, 2);
+    const firstRow = ElementsData.Elements.slice(0, 57).concat(
+      ElementsData.Elements.slice(71, 89),
+      ElementsData.Elements.slice(103, 118),
+    );
     const secondAndThirdRow = ElementsData.Elements.slice(2, 18);
     const FourthAndFifthRow = ElementsData.Elements.slice(18, 54);
     const SixthRow = [].concat(
@@ -102,8 +106,9 @@ class PeriodicTable extends React.PureComponent {
       <Container onMouseLeave={this.onMouseLeave}>
         <Controls setFilter={this.setFilter}/>
         <GridWrapper>
-          {this.state.isHoverActive ? (
+          {/* {this.state.isHoverActive ? (
             <Fragment>
+              <FilterDescription/>
               <ElementHeader
                 value={this.state.selectedElementDetails}
                 stylesObj={this.state.stylesObj}
@@ -112,17 +117,17 @@ class PeriodicTable extends React.PureComponent {
               {this.state.isHoverActive?<SupplyRisk />:""}
             </Fragment>
           ) : (
-            <FilterHeader header={this.state.filter.header} />
-          )}
+            <DescriptionContainer filter={this.state.filter}/>
+            // <FilterHeader header={this.state.filter.header} />
+          )} */}
+          <DescriptionContainer filter={this.state.filter}/>
           <ElementList
             row={firstRow}
-            checkAt={1}
-            secondaryClass={Styles.He}
             onHover={this.onHover}
             filter={this.state.filter}
           />
         </GridWrapper>
-        <GridWrapper>
+        {/* <GridWrapper>
           {this.state.isHoverActive ? (
             <ElementDescription
               value={this.state.selectedElementDetails}
@@ -179,7 +184,7 @@ class PeriodicTable extends React.PureComponent {
             onHover={this.onHover}
             filter={this.state.filter}
           />
-        </GridWrapper>
+        </GridWrapper> */}
       </Container>
     );
   }

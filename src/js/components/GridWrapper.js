@@ -9,7 +9,7 @@ import Styles from "../../css/PeriodicTable.css";
 class GridWrapper extends React.PureComponent {
   render() {
     return (
-      <div className={Styles.wrapper} value={this.props.value}>
+      <div className={Styles.wrapper}>
         {this.props.children}
       </div>
     );

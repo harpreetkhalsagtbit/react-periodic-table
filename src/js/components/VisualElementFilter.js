@@ -1,11 +1,14 @@
 import React from "react";
+import { VISAUAL_ELEMENTS_IMAGES } from "./common/Constants";
 
 import Styles from "../../css/Controls.css";
-const BlockFilter = ({ setFilter }) => {
+const VisualElementFilter = ({ setFilter }) => {
   const onClick = e => {
     setFilter({
       id: "",
-      type: "visualElements"
+      type: "visualElements",
+      header:VISAUAL_ELEMENTS_IMAGES.HEADER_TEXT,
+      desc:VISAUAL_ELEMENTS_IMAGES.DESCRIPTION_TEXT
     });
   };
 
@@ -16,4 +19,4 @@ const BlockFilter = ({ setFilter }) => {
   )
 }
 
-export default BlockFilter;
+export default VisualElementFilter;

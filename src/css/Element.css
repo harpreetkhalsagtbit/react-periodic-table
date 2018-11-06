@@ -55,6 +55,18 @@
     align-items: center;
 }
 
+.He {
+    grid-column-start: 18;
+}
+
+.B {
+    grid-column-start:13;
+}
+
+.Al {
+    grid-column-start:13;
+}
+  
 .hydrogenName {
     background-color: #a3c7d2;
 }

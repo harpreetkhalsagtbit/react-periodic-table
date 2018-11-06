@@ -198,6 +198,14 @@ let getELementSpecificProperties = ({ value, className, filter }) => {
       };
       break;
   }
+  // Element specific css
+  if(value.ElementID == "2") {
+    obj.cell = obj.cell.concat(" ", Styles.He);
+  } else if(value.ElementID == "5") {
+    obj.cell = obj.cell.concat(" ", Styles.B);
+  } else if(value.ElementID == "13") {
+    obj.cell = obj.cell.concat(" ", Styles.Al);
+  }
   // add metaloid css
   if (filter.type === "metals" && value.PropertyID == "3") {
     obj.cell = obj.cell.concat(" ", Styles.metalloid);

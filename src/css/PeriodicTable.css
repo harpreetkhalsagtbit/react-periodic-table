@@ -27,9 +27,7 @@
 }
 
 .header {
-  grid-row-start: 1;
-  grid-column-start: 3;
-  grid-column-end: 13;
+  height: 50px;
   background-color: grey;
   background: #f2f2f4;
   color: #636363;
@@ -54,16 +52,19 @@
   line-height: normal;
 }
 
+.descriptionContainer {
+  background-color:#f2f2f4;
+  height:150px;
+  grid-column-start:3;
+  grid-row-start:1;
+  grid-column-end:13;
+}
+
 .description {
-  grid-column-start: 3;
-  grid-column-end: 13;
-  grid-row-start: 1;
-  grid-row-end: 3;
   border: 1px solid #dedede;
-  padding: 6px 11px 11px 11px;
+  background-color: white;
   /* width: 491px; */
-  /* height: 80px; */
-  margin-top: 4px;
+  height: 100px;
   overflow: hidden;
   font-family: Arial !important;
   font-size: 12px;
