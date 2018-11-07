@@ -113,7 +113,7 @@
 }
 
 .elementDescription .elementImg {
-  height: 100px;
+  height: 98px;
   width: 110px;
 }
 
@@ -129,6 +129,8 @@
 .elementDescriptionTable div {
   border-bottom: 0px;
   border-left: 0px;
+  padding-top:4px;
+  padding-left: 5px;
 }
 
 .bigCell {
