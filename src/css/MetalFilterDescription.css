@@ -21,4 +21,6 @@
     list-style: none;
     padding: unset;
     align-items: center;
+    margin: unset;
+    margin-top: 10px;
 }
