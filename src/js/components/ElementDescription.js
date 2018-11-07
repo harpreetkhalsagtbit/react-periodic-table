@@ -23,19 +23,17 @@ const ElementDescription = ({
       </div>
       <div className={Styles.elementDescriptionTable}>
         <div>key isotopes</div>
+        <div>{keyIsotopes(value.ElementID)}</div>
         <div>Electronic Configuration</div>
+        <div>{sanitizeSubscript(value.ElectronConfiguration)}</div>
         <div>
           Density(g cm
           <sup>-3</sup>)
         </div>
+        <div>{value.Density || "Unknown"}</div>
         <div>
           1<sup>st</sup> ionisation energy
         </div>
-      </div>
-      <div className={Styles.elementDescriptionTable}>
-        <div>{keyIsotopes(value.ElementID)}</div>
-        <div>{sanitizeSubscript(value.ElectronConfiguration)}</div>
-        <div>{value.Density || "Unknown"}</div>
         <div>{getFirstIonisationEnergy(value.ElementID)}</div>
       </div>
       <div className={Styles.bigCell}>

@@ -17,7 +17,7 @@ export const NON_METAL = {
 export const BLOCK = {
     1: {
         HEADER_TEXT: 's block',
-        DESCRIPTION_TEXT: 'The <strong>s block</strong> includes the alkali metals and alkaline earth metals. These are soft and reactive metals. The s block also contains hydrogen and helium, which are non-metals and gases. The elements of the s block have their valence electrons in s orbitals. The s sub-shell can contain a maximum of two electrons. This explains why the block is two columns wide." tabindex="73" onkeydown="BlockFocus(this,event)'
+        DESCRIPTION_TEXT: 'The <strong>s block</strong> includes the alkali metals and alkaline earth metals. These are soft and reactive metals. The s block also contains hydrogen and helium, which are non-metals and gases. The elements of the s block have their valence electrons in s orbitals. The s sub-shell can contain a maximum of two electrons. This explains why the block is two columns wide.'
     },
     2: {
         HEADER_TEXT: 'p block',
@@ -86,43 +86,43 @@ export const GROUP = {
     },
     2: {
         HEADER_TEXT: 'Group 2',
-        DESCRIPTION_TEXT: 'The group 2 elements are also called the &#8216;alkaline earth metals&#8217;. They are all reactive metals with distinctive flame colours. In general they are harder, denser and have higher melting points than each alkali metal in the same period. Group 2 elements have two electrons in their outermost s sub-shell.'
+        DESCRIPTION_TEXT: 'The group 2 elements are also called the &#8216;alkaline earth metals‘. They are all reactive metals with distinctive flame colours. In general they are harder, denser and have higher melting points than each alkali metal in the same period. Group 2 elements have two electrons in their outermost s sub-shell.'
     },
     3: {
         HEADER_TEXT: 'Group 3',
-        DESCRIPTION_TEXT: 'Group 3 is a family of transition metal elements. They each have a valence electron configuration of d&lt;sup&gt;1&lt;/sup&gt;s&lt;sup&gt;2&lt;/sup&gt;. They are most often found in the +3 oxidation state. Scientists do not always agree whether lanthanum and actinium, or lutetium and lawrencium, should be included in this group.'
+        DESCRIPTION_TEXT: 'Group 3 is a family of transition metal elements. They each have a valence electron configuration of d<sup>1</sup>s<sup>2</sup>. They are most often found in the +3 oxidation state. Scientists do not always agree whether lanthanum and actinium, or lutetium and lawrencium, should be included in this group.'
     },
     4: {
         HEADER_TEXT: 'Group 4',
-        DESCRIPTION_TEXT: 'Group 4 is a group of transition metal elements with high melting points. They typically have a valence electron configuration of d&lt;sup&gt;2&lt;/sup&gt;s&lt;sup&gt;2&lt;/sup&gt;.'
+        DESCRIPTION_TEXT: 'Group 4 is a group of transition metal elements with high melting points. They typically have a valence electron configuration of d<sup>2</sup>s<sup>2</sup>.'
     },
     5: {
         HEADER_TEXT: 'Group 5',
-        DESCRIPTION_TEXT: 'Group 5 is a group of reactive transition metal elements with high melting points. They typically have a valence electron configuration of d&lt;sup&gt;3&lt;/sup&gt;s&lt;sup&gt;2&lt;/sup&gt;.'
+        DESCRIPTION_TEXT: 'Group 5 is a group of reactive transition metal elements with high melting points. They typically have a valence electron configuration of d<sup>3</sup>s<sup>2</sup>.'
     },
     6: {
         HEADER_TEXT: 'Group 6',
-        DESCRIPTION_TEXT: 'Group 6 is a group of transition metal elements. The aufbau principle predicts that they will each have a valence electron configuration of d&lt;sup&gt;4&lt;/sup&gt;s&lt;sup&gt;2&lt;/sup&gt;. However, chromium and molybdenum are exceptions to this rule and have a valence electron configuration of d&lt;sup&gt;5&lt;/sup&gt;s&lt;sup&gt;1&lt;/sup&gt;.'
+        DESCRIPTION_TEXT: 'Group 6 is a group of transition metal elements. The aufbau principle predicts that they will each have a valence electron configuration of d<sup>4</sup>s<sup>2</sup>. However, chromium and molybdenum are exceptions to this rule and have a valence electron configuration of d<sup>5</sup>s<sup>1</sup>.'
     },
     7: {
         HEADER_TEXT: 'Group 7',
-        DESCRIPTION_TEXT: 'Group 7 is a group of transition metal elements containing manganese, technetium, rhenium and bohrium. They typically have a valence electron configuration of d&lt;sup&gt;5&lt;/sup&gt;s&lt;sup&gt;2&lt;/sup&gt;.&lt;br/&gt;&lt;br/&gt;&lt;i&gt;Note: If you&#8217;re looking for the Halogens, click on group 17.&lt;/i&gt;'
+        DESCRIPTION_TEXT: 'Group 7 is a group of transition metal elements containing manganese, technetium, rhenium and bohrium. They typically have a valence electron configuration of d<sup>5</sup>s<sup>2</sup>.<br/><br/><i>Note: If you‘re looking for the Halogens, click on group 17.</i>'
     },
     8: {
         HEADER_TEXT: 'Group 8',
-        DESCRIPTION_TEXT: 'Group 8 is a group of shiny, silvery transition metals containing iron, ruthenium, osmium and hassium. They typically have a valence electron configuration of d&lt;sup&gt;6&lt;/sup&gt;s&lt;sup&gt;2&lt;/sup&gt;.&lt;br/&gt;&lt;br/&gt;&lt;i&gt;Note: If you&#8217;re looking for the Noble gases, click on group 18.&lt;/i&gt;'
+        DESCRIPTION_TEXT: 'Group 8 is a group of shiny, silvery transition metals containing iron, ruthenium, osmium and hassium. They typically have a valence electron configuration of d<sup>6</sup>s<sup>2</sup>.<br/><br/><i>Note: If you‘re looking for the Noble gases, click on group 18.</i>'
     },
     9: {
         HEADER_TEXT: 'Group 9',
-        DESCRIPTION_TEXT: 'Group 9 is a group of silvery-white transition metal elements with high melting points. The group contains cobalt, rhodium, iridium and meitnerium. They typically have a valence electron configuration of d&lt;sup&gt;7&lt;/sup&gt;s&lt;sup&gt;2&lt;/sup&gt;.'
+        DESCRIPTION_TEXT: 'Group 9 is a group of silvery-white transition metal elements with high melting points. The group contains cobalt, rhodium, iridium and meitnerium. They typically have a valence electron configuration of d<sup>7</sup>s<sup>2</sup>.'
     },
     10: {
         HEADER_TEXT: 'Group 10',
-        DESCRIPTION_TEXT: 'Group 10 is a group of white to light grey transition metal elements. The group contains nickel, palladium, platinum and darmstadtium. The aufbau principle predicts that they will each have a valence electron configuration of d&lt;sup&gt;8&lt;/sup&gt;s&lt;sup&gt;2&lt;/sup&gt;, however, palladium, platinum and darmstadtium are all exceptions to this rule.'
+        DESCRIPTION_TEXT: 'Group 10 is a group of white to light grey transition metal elements. The group contains nickel, palladium, platinum and darmstadtium. The aufbau principle predicts that they will each have a valence electron configuration of d<sup>8</sup>s<sup>2</sup>, however, palladium, platinum and darmstadtium are all exceptions to this rule.'
     },
     11: {
         HEADER_TEXT: 'Group 11',
-        DESCRIPTION_TEXT: 'Group 11 is a group of transition metals. The group includes copper, silver and gold, which are sometimes called the &#39;coinage metals&#39;. They typically have a valence electron configuration of d&lt;sup&gt;10&lt;/sup&gt;s&lt;sup&gt;1&lt;/sup&gt;.'
+        DESCRIPTION_TEXT: 'Group 11 is a group of transition metals. The group includes copper, silver and gold, which are sometimes called the \'coinage metals\'. They typically have a valence electron configuration of d<sup>10</sup>s<sup>1</sup>.'
     },
     12: {
         HEADER_TEXT: 'Group 12',

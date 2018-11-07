@@ -59,6 +59,14 @@ class PeriodicTable extends React.PureComponent {
         supplyRiskColor: relativeSupplyIndex,
         isHoverActive: true
       }));
+    } else if(this.state.filter.type == "visualElements") {
+      this.setState(state => ({
+        selectedElementDetails: value,
+        stylesObj,
+        supplyRiskColor: '',
+        filter:this.state.filter,
+        isHoverActive: true
+      }));
     }
   }
 
@@ -103,9 +111,11 @@ class PeriodicTable extends React.PureComponent {
               <ElementDescriptionContainer
                 value={this.state.selectedElementDetails}
                 stylesObj={this.state.stylesObj}
-                supplyRiskColor={this.state.supplyRiskColor}>
+                supplyRiskColor={this.state.supplyRiskColor}
+                isVisualFilterActive={(this.state.filter && this.state.filter.type == "visualElements")?true:false}
+              >
               </ElementDescriptionContainer>
-              {this.state.isHoverActive?<SupplyRisk />:""}
+              {this.state.isHoverActive && this.state.filter.type != "visualElements"?<SupplyRisk />:""}
             </Fragment>
           ) : (
             <DescriptionContainer filter={this.state.filter}/>

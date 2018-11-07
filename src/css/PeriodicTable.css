@@ -69,6 +69,7 @@
   font-family: Arial !important;
   font-size: 12px;
   color: #636363;
+  padding: 10px;
 }
 
 .fBlockMargin {
@@ -83,7 +84,17 @@
   grid-column-start: 3;
 }
 
-.elementDescription {
+.visualElementDescription {
+  display: flex;
+}
+
+.imageExplanation {
+  padding: 10px;
+  color: #636363;
+  font-family: Arial !important;
+  font-size: 12px;
+}
+  .elementDescription {
   grid-column-start: 3;
   grid-column-end: 13;
   grid-row-start: 1;
@@ -98,25 +109,26 @@
   color: #636363;
 
   display: grid;
-  grid-template-columns: 1.2fr 2fr 2fr 1.2fr;
-  border: 1px solid red;
+  grid-template-columns: 0.3fr auto 0.3fr;
 }
 
 .elementDescription .elementImg {
   height: 100px;
+  width: 110px;
 }
 
 .elementDescriptionTable {
   display: grid;
+  grid-template-columns: 1fr 1fr;
 }
 
 .elementDescriptionTable div {
-  border: 1px solid red;
+  border: 1px solid #dedede;
 }
 
 .elementDescriptionTable div {
-  border-bottom: 0px solid red;
-  border-left: 0px solid red;
+  border-bottom: 0px;
+  border-left: 0px;
 }
 
 .bigCell {

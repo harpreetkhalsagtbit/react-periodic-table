@@ -2,7 +2,6 @@ import React from "react";
 import Styles from "../../css/Element.css";
 
 let getELementSpecificProperties = ({ value, className, filter }) => {
-  console.log(filter)
   let {
     ElementID: elementId,
     GroupID: groupId,
@@ -231,7 +230,7 @@ const Element = ({ index, className, value, onHover, filter }) => {
     className,
     filter
   };
-  console.log("here inside element")
+  // console.log("here inside element")
   const MurrayImageWidth = [
     "2",
     "55",
