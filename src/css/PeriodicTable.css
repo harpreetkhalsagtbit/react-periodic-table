@@ -15,6 +15,7 @@
   grid-gap: 1px;
   grid-template-columns: repeat(18, 1fr);
   grid-auto-rows: 50px;
+  grid-row-gap: 5px;
 }
 
 .cell {
@@ -39,6 +40,7 @@
   justify-content: space-between;
   align-items: center;
   padding-left: 20px;
+  border-bottom: 5px solid white;
 }
 
 .header span {
@@ -54,7 +56,7 @@
 
 .descriptionContainer {
   background-color:#f2f2f4;
-  height:150px;
+  height:160px;
   grid-column-start:3;
   grid-row-start:1;
   grid-column-end:13;
@@ -70,7 +72,7 @@
   font-size: 12px;
   color: #636363;
   padding: 6px 11px 11px 11px;
-  height: 80px;
+  height: 85px;
 }
 
 .fBlockMargin {
@@ -102,7 +104,7 @@
   grid-row-end: 3;
   border: 1px solid #dedede;
   /* width: 491px; */
-  /* height: 80px; */
+  height: 105px;
   /* margin-top: 4px;
   overflow: hidden; */
   font-family: Arial !important;
@@ -114,13 +116,14 @@
 }
 
 .elementDescription .elementImg {
-  height: 98px;
+  height: 105px;
   width: 110px;
 }
 
 .elementDescriptionTable {
   display: grid;
   grid-template-columns: 1fr 1fr;
+  height: 105px;
 }
 
 .elementDescriptionTable div {
@@ -138,7 +141,7 @@
   display: grid;
   /* grid-template-rows: 1.5fr 1fr; */
   color: black;
-  height: 100px;
+  height: 105px;
 }
 
 .bigCellLabel {
