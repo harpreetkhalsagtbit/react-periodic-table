@@ -109,7 +109,7 @@
   color: #636363;
 
   display: grid;
-  grid-template-columns: 0.3fr auto 0.3fr;
+  grid-template-columns: 0.3fr auto 0.4fr;
 }
 
 .elementDescription .elementImg {
