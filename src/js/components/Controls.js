@@ -12,15 +12,15 @@ import TemperatureFilter from "./TemperatureFilter";
 import Styles from "../../css/Controls.css";
 
 const Controls = ({ setFilter }) => (
-  <Fragment>
+  <div>
     <div className={Styles.wrapper}>
-      <VisualElementFilter setFilter={setFilter}/>
-      <TemperatureFilter  setFilter={setFilter}/>
-      <div className={Styles.container}>
+      <VisualElementFilter setFilter={setFilter} />
+      <TemperatureFilter setFilter={setFilter} />
+      <div className={Styles.classificationContainer}>
         <label>Classification</label>
-        <MetalFilter setFilter={setFilter}></MetalFilter>
-        <NonMetalFilter setFilter={setFilter}></NonMetalFilter>
-        <ClearFilter setFilter={setFilter}></ClearFilter>
+        <MetalFilter setFilter={setFilter} />
+        <NonMetalFilter setFilter={setFilter} />
+        <ClearFilter setFilter={setFilter} />
       </div>
     </div>
     <div className={Styles.wrapper}>
@@ -30,7 +30,17 @@ const Controls = ({ setFilter }) => (
       </div>
       <PeriodFilter setFilter={setFilter} />
     </div>
-  </Fragment>
+  </div>
 );
 
 export default Controls;
+
+{
+  /* <div className={Styles.wrapper}>
+<div className={Styles.container}>
+  <GroupFilter setFilter={setFilter} />
+  <BlockFilter setFilter={setFilter} />
+</div>
+<PeriodFilter setFilter={setFilter} />
+</div> */
+}

@@ -40,7 +40,7 @@ const PeriodFilter = ({ setFilter }) => {
   };
   return (
     <Fragment>
-      <div className={Styles.container}>
+      <div className={Styles.periodContainer}>
         <label>Periods</label>
         {generatePeriodFilter(onClick)}
         <span onClick={onClickLanthanides}>Lanthanides</span>

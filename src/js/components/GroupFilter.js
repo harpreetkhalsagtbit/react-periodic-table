@@ -1,6 +1,7 @@
 import React, { Fragment } from "react";
 
 import { GROUP } from "./common/Constants";
+import Styles from "../../css/Controls.css";
 const groupLength = 18;
 
 const generateGroupFilter = onClick => {
@@ -23,7 +24,7 @@ const GroupFilter = ({ setFilter }) => {
 
   return (
     <Fragment>
-      <div>
+      <div className={Styles.groupContainer}>
         <label>Groups</label>
         {generateGroupFilter(onClick)}
       </div>

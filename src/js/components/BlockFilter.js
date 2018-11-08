@@ -19,7 +19,7 @@ const BlockFilter = ({ setFilter }) => {
   const fBlock = "4";
   return (
     <Fragment>
-    <div className={Styles.blocks}>
+    <div className={Styles.blockContainer}>
       <label>Blocks</label>
       <span onClick={onClick} data-block-id={sBlock}>s</span>
       <span onClick={onClick} data-block-id={pBlock}>p</span>

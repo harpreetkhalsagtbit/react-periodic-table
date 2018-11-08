@@ -1,15 +1,49 @@
 .wrapper {
     display: flex;
     justify-content: space-between;
+    /* height: 100px; */
+    background-color: #f2f2f3;
+    padding: 10px;
+    align-items: center;
 }
 .container {
     display: flex;
+    align-items: center;
 }
-.container span{
+
+.wrapper span{
     background-color: rgb(72, 12, 60);
     color: white;
-    padding: 2px;
-    margin: 1px;
+}
+
+.classificationContainer {
+    display: flex;
+    width: auto;
+    align-items: center;
+}
+
+
+.classificationContainer div{
+    width:80px;
+    margin-left:5px;
+    padding: 5px;
+    background-color: rgb(72, 12, 60);
+    color: white;
+    text-align: center;
+}
+
+.groupContainer span{
+    width:80px;
+    margin-left:2px;
+    padding: 3px;
+    background-color: rgb(72, 12, 60);
+    color: white;
+    text-align: center;
+}
+
+.temperatureHandler {
+    padding: 5px;
+    margin: 5px;
 }
 
 /* .container span:hover {
@@ -17,6 +51,31 @@
     height: 17px !important;
 } */
 
-.blocks {
+.blockContainer {
     margin-left: 50px;
+}
+
+.blockContainer span{
+    width:80px;
+    margin-left:2px;
+    padding: 3px;
+    background-color: rgb(72, 12, 60);
+    color: white;
+    text-align: center;
+}
+
+.periodContainer {
+}
+
+.periodContainer span{
+    width:80px;
+    margin-left:2px;
+    padding: 3px;
+    background-color: rgb(72, 12, 60);
+    color: white;
+    text-align: center;
+}
+
+label {
+    margin-right: 5px;
 }

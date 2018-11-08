@@ -1,8 +1,8 @@
 .container {
   margin: auto;
   width: 80%;
-  display: grid;
-  grid-gap: 3px;
+  /* display: grid;
+  grid-gap: 3px; */
   padding: 5px;
 }
 
