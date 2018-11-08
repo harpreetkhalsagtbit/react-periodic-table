@@ -1,49 +1,72 @@
+.controlsWrapper {
+  margin-right: 13px;
+  margin-bottom: 10px;
+}
 .wrapper {
-    display: flex;
-    justify-content: space-between;
-    /* height: 100px; */
-    background-color: #f2f2f3;
-    padding: 10px;
-    align-items: center;
+  display: flex;
+  justify-content: space-between;
+  /* height: 100px; */
+  background-color: #f2f2f3;
+  padding: 10px;
+  align-items: center;
 }
 .container {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
-.wrapper span{
-    background-color: rgb(72, 12, 60);
-    color: white;
+.wrapper span {
+  background-color: rgb(72, 12, 60);
+  color: white;
+}
+
+.visualImagesContainer {
+  margin-left: 5px;
+  padding: 5px;
+  background-color: rgb(72, 12, 60);
+  color: white;
+  text-align: center;
 }
 
 .classificationContainer {
-    display: flex;
-    width: auto;
-    align-items: center;
+  display: flex;
+  width: auto;
+  align-items: center;
 }
 
-
-.classificationContainer div{
-    width:80px;
-    margin-left:5px;
-    padding: 5px;
-    background-color: rgb(72, 12, 60);
-    color: white;
-    text-align: center;
+.classificationContainer div {
+  width: 80px;
+  margin-left: 5px;
+  padding: 5px;
+  background-color: rgb(72, 12, 60);
+  color: white;
+  text-align: center;
 }
 
-.groupContainer span{
-    width:80px;
-    margin-left:2px;
-    padding: 3px;
-    background-color: rgb(72, 12, 60);
-    color: white;
-    text-align: center;
+.classificationContainer div span {
+  width: inherit;
+}
+
+.clearFilterContainer {
+  background-color: #636363 !important;
+}
+
+.clearFilterContainer span {
+  background-color: #636363 !important;
+}
+
+.groupContainer span {
+  width: 80px;
+  margin-left: 2px;
+  padding: 3px;
+  background-color: rgb(72, 12, 60);
+  color: white;
+  text-align: center;
 }
 
 .temperatureHandler {
-    padding: 5px;
-    margin: 5px;
+  padding: 5px;
+  margin: 5px;
 }
 
 /* .container span:hover {
@@ -52,30 +75,30 @@
 } */
 
 .blockContainer {
-    margin-left: 50px;
+  margin-left: 50px;
 }
 
-.blockContainer span{
-    width:80px;
-    margin-left:2px;
-    padding: 3px;
-    background-color: rgb(72, 12, 60);
-    color: white;
-    text-align: center;
+.blockContainer span {
+  width: 80px;
+  margin-left: 2px;
+  padding: 3px;
+  background-color: rgb(72, 12, 60);
+  color: white;
+  text-align: center;
 }
 
 .periodContainer {
 }
 
-.periodContainer span{
-    width:80px;
-    margin-left:2px;
-    padding: 3px;
-    background-color: rgb(72, 12, 60);
-    color: white;
-    text-align: center;
+.periodContainer span {
+  width: 80px;
+  margin-left: 2px;
+  padding: 3px;
+  background-color: rgb(72, 12, 60);
+  color: white;
+  text-align: center;
 }
 
 label {
-    margin-right: 5px;
+  margin-right: 5px;
 }

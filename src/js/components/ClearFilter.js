@@ -13,7 +13,7 @@ const ClearFilter = ({ setFilter }) => {
   };
 
   return (
-      <div className={Styles.container}>
+      <div className={`${Styles.container} ${Styles.clearFilterContainer}`}>
         <span onClick={onClick}>Clear filters</span>
       </div>
   )

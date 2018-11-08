@@ -12,7 +12,7 @@ import TemperatureFilter from "./TemperatureFilter";
 import Styles from "../../css/Controls.css";
 
 const Controls = ({ setFilter }) => (
-  <div>
+  <div className={Styles.controlsWrapper}>
     <div className={Styles.wrapper}>
       <VisualElementFilter setFilter={setFilter} />
       <TemperatureFilter setFilter={setFilter} />

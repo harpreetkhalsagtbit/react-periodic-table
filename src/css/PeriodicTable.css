@@ -58,6 +58,7 @@
   grid-column-start:3;
   grid-row-start:1;
   grid-column-end:13;
+  margin-right: 13px;
 }
 
 .description {
@@ -180,6 +181,7 @@
   background-color: grey;
   background: #f2f2f4;
   color: #636363;
+  margin-right: 13px;
 }
 
 .supplyRiskRows {
