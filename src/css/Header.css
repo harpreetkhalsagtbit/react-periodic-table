@@ -37,6 +37,7 @@ ul {
     padding: 0px;
     margin: 0px;
     align-content: center;
+    margin-left: 0px !important;
 }
 
 ul li a{

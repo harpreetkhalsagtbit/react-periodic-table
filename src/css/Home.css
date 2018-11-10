@@ -3,3 +3,31 @@
     width: 80%;
     padding: 15px;
 }
+
+.container {
+    width:80%;
+    height: 56px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-top: 1px solid #d3d3d3;
+    margin-top: 15px;
+}
+
+.appDownloadText {
+    width: 300px;
+}
+
+.container span {
+    margin-right: 10px;
+}
+
+.socialbarContainer {
+    background: url(http://www.rsc.org/learn-chemistry/content/Images/lc-sidepanel.png) no-repeat 0px 0px transparent;
+    width: 40px;
+    position: absolute;
+    right: 100px;
+    top: 155px;
+    height: 308px
+}

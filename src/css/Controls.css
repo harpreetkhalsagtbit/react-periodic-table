@@ -34,7 +34,11 @@
   align-items: center;
 }
 
-.classificationContainer div {
+.classificationContainer div:visited {
+  background-color: red;
+}
+
+  .classificationContainer div {
   width: 80px;
   margin-left: 5px;
   padding: 5px;
