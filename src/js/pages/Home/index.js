@@ -51,13 +51,11 @@ class Home extends React.PureComponent {
           </div>
           <div className={Styles.socialbarContainer}>
             <a
-              class="social_newsletter_image social_icons_newsletter newsletterclick"
               href="http://www.rsc.org/learn-chemistry/newsletter"
             >
               &nbsp;
             </a>
             <a
-              class="social_feedback_image social_icons_feedback feedbackclick"
               href="http://www.rsc.org/learn-chemistry/feedback"
             >
               &nbsp;
