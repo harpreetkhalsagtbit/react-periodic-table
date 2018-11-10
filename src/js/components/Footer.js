@@ -6,22 +6,24 @@ const Footer = () => {
   return (
     <footer>
       <div className={Styles.footerSubMenu}>
-        <ul className={Styles.breadCumbs}>
-          <li>
-            <Link to="/">rsc.org</Link>
-          </li>
-          <li>
-            <img
-              src="//www.rsc-cdn.org/global/header-footer/images/icons/chevron-right-light.png"
-              width="8"
-              height="8"
-              alt=""
-            />
-          </li>
-          <li>
-            <Link to="/">Periodic Table</Link>
-          </li>
-        </ul>
+        <div className={Styles.container}>
+          <ul className={Styles.breadCumbs}>
+            <li>
+              <Link to="/">rsc.org</Link>
+            </li>
+            <li>
+              <img
+                src="//www.rsc-cdn.org/global/header-footer/images/icons/chevron-right-light.png"
+                width="8"
+                height="8"
+                alt=""
+              />
+            </li>
+            <li>
+              <Link to="/">Periodic Table</Link>
+            </li>
+          </ul>
+        </div>
       </div>
       <div className={Styles.footerMenu}>
         <div className={Styles.container}>
