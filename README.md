@@ -1,5 +1,5 @@
 # react-preriodic-table
-React Periodic Table is a clone of http://www.rsc.org/periodic-table/. It is a learning project. It is `pure React.js implementation` with webpack from scratch without using any boilerplate or create-react-app. For `CSS - Grid Layout and Flex Layout` is used. I have created separate branch for each release. Ignroe CSS flaws :).
+React Periodic Table is a clone of http://www.rsc.org/periodic-table/. It is a learning project. It is `pure React.js implementation` with webpack from scratch without using any boilerplate or create-react-app. For `CSS - Grid Layout and Flex Layout` is used. I have created separate branch for each release. Ignroe CSS flaws :). No need of Redux till release 2, data is imported as `JSON` to main component - `PeridocTable` and passed to other components using `Props`.
 
 
 # Demo
