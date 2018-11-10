@@ -8,12 +8,11 @@ module.exports = {
   mode:"development",
   // Webpack configuration goes here
   entry: {
-    app:"./src/js/index.js",
-    vendor:['react']
+    main:"./src/js/index.js"
   },
   output: {
     filename: '[name].[hash].js',
-    publicPath: '/'
+    publicPath: ''
   },
   devtool: "inline-source-map",
   module: {
@@ -42,16 +41,6 @@ module.exports = {
     ]
   },
   optimization: {
-    splitChunks: {
-      cacheGroups: {
-        vendor: {
-          chunks: 'initial',
-          test: 'vendor',
-          name: 'vendor',
-          enforce: true
-        }
-      }
-    },
     minimizer: [
       new UglifyJsPlugin({
         uglifyOptions: {
