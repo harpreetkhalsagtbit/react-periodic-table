@@ -7,7 +7,7 @@ If you are an experienced developer in React, please review code and suggest imp
 
 
 # Demo
-https://harpreetkhalsagtbit.github.io/react-preriodic-table/#/
+https://react-periodic-table-blue.vercel.app/#/
 
 # Change Logs
 
